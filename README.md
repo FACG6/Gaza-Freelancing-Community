@@ -12,6 +12,7 @@ Making community website to connect freelancers togothers to be able to cooperat
   * CSS
   * JS
   * Express-Js
+  * handlebarse
   * Postgres sql 
 
 ### - See prototype here : 
