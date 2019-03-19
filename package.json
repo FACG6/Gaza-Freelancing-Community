@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,10 @@
   },
   "homepage": "https://github.com/FACG6/Gaza-Freelancing-Community#readme",
   "dependencies": {
+    "cookie-parser": "^1.4.4",
     "express": "^4.16.4"
   },
   "devDependencies": {
-    "eslint": "^5.15.3",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
   }
 }
