@@ -25,6 +25,7 @@
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4"
   },
+  
   "devDependencies": {
     "eslint": "^5.15.3",
     "eslint-config-airbnb-base": "^13.1.0",
