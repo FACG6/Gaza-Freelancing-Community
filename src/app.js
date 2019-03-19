@@ -12,8 +12,8 @@ app.use(cookieParser());
 
 app.set('port', process.env.PORT || 3000);
 
-app.get('/', (req,res) => {
-  res.send('hello from server')
-})
+app.get('/', (req, res) => {
+  res.send('hello from server');
+});
 
 module.exports = app;
