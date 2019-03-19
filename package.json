@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-   
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/FACG6/Gaza-Freelancing-Community#readme",
   "dependencies": {
-    "dotenv": "^7.0.0",
-    "pg": "^7.9.0"
+  
   }
 }
