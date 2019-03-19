@@ -7,7 +7,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV = test tape test/test.js | tap-spec",
+    "start": "NODE_ENV = production  src/index.js",
+    "dev": "NODE_ENV = development nodemon src/index.js"
   },
   "repository": {
     "type": "git",
@@ -18,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/FACG6/Gaza-Freelancing-Community/issues"
   },
-  "homepage": "https://github.com/FACG6/Gaza-Freelancing-Community#readme"
+  "homepage": "https://github.com/FACG6/Gaza-Freelancing-Community#readme",
+  "dependencies": {
+    "dotenv": "^7.0.0",
+    "pg": "^7.9.0"
+  }
 }
