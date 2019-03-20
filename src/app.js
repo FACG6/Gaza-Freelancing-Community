@@ -10,8 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.disable('x-powered-by');
 app.use(cookieParser());
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
+app.set('view engine', 'hbs');
 app.engine('hbs', exphbs({
   extname: 'hbs',
   layoutsDir: join(__dirname, 'views', 'layouts'),
