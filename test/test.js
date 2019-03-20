@@ -1,6 +1,6 @@
 const supertest = require('supertest');
 const test = require('tape');
-const router = require('../src/controllers');
+const router = require('../src/app');
 
 test('Test Login route ', (t) => {
   supertest(router)
@@ -11,8 +11,7 @@ test('Test Login route ', (t) => {
       if (error) {
         t.error(error);
       }
-      console.log(res);
-    //   t.equal(typeof res.body, 'object', 'should return type of body object');
+      t.equal(typeof res.body, 'object', 'should return type of body object');
       t.end();
     });
 });
