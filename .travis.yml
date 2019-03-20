@@ -10,7 +10,7 @@ services:
 before_script:
  - npm i
  - psql -c "create database travis_ci_test;" -U postgres
- - psql -c "create user travis with password '123456';" -U postgres
+ - psql -c "create user travis1 with password '123456';" -U postgres
 notifications:
   email: false
 env:
