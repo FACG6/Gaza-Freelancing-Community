@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: false }));
 app.disable('x-powered-by');
 app.use(cookieParser());
 app.set('view engine', 'hbs');
+app.set('views', join(__dirname, 'views'));
 app.engine('hbs', exphbs({
   extname: 'hbs',
   layoutsDir: join(__dirname, 'views', 'layouts'),
