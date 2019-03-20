@@ -29,10 +29,10 @@
          <label> Category : </label>
          <select class="categoryFields">
             <option>  </option>
-            <option> Web Developer </option>
-            <option> UX/UI Designer </option>
-            <option> Translator </option>
-            <option> System Analyst </option>
+            <option id="webDeveloper"> Web Developer </option>
+            <option id="uxUiDesigner"> UX/UI Designer </option>
+            <option id="translator"> Translator </option>
+            <option id="systemAnalyst"> System Analyst </option>
          </select>
       </div>
       <div class="specialization">
@@ -40,7 +40,7 @@
          <select class="specializationFields">
             <option> </option>
             {{#each specId}}
-            <option> {{this}}</option>
+            <option class="spec"> {{this}}</option>
             {{/each}}
          </select>
       </div>
