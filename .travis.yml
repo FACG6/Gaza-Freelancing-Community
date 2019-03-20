@@ -1,0 +1,18 @@
+sudo: false
+language: node_js
+node_js:
+ - "node"
+ script:
+  - npm run lint
+  - npm run test
+services:
+  - postgresql
+before_script:
+ - npm i
+ - psql -c "create database travis_ci_test;"
+ - psql -c "create user travis with password '123456';" -U
+notifications:
+  email: false
+env:
+  global:
+  - PGPORT=5432
