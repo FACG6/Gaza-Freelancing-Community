@@ -1,5 +1,6 @@
 BEGIN; 
-DROP TABLE IF EXISTS field, specialization, users, proposal, requirement;
+
+DROP TABLE IF EXISTS field, specialization, users, proposal, requirement CASCADE;
 
 CREATE TABLE field (
 	id  SERIAL PRIMARY KEY,
@@ -9,17 +10,17 @@ CREATE TABLE field (
 CREATE TABLE specialization (
 	id SERIAL PRIMARY KEY,
 	name varchar(30) NOT NULL,
-	fied_id INT REFERENCES field(id)
+	field_id INT REFERENCES field(id)
 );
 
 CREATE TABLE users (
 	id SERIAL  PRIMARY KEY,
 	firstname VARCHAR(20) NOT NULL,
 	lastname VARCHAR(20) NOT NULL,
-  email TEXT NOT NULL UNIQUE,
-  freelancer_url VARCHAR(50) NOT NULL,
-	photo_url VARCHAR(70) NOT NULL,
-	birthday DATE NOT NULL,
+  email VARCHAR NOT NULL UNIQUE,
+  freelancer_url varchar NOT NULL,
+	photo_url VARCHAR NOT NULL,
+	birthday TIMESTAMP ,
 	mobile_number INT NOT NULL UNIQUE,
 	specalization_id INT REFERENCES specialization(id),
   city VARCHAR(20),
@@ -27,17 +28,17 @@ CREATE TABLE users (
 );
 
 CREATE TABLE proposal (
-	id SERIAL NOT NULL PRIMARY KEY ,
+	id SERIAL PRIMARY KEY ,
 	title varchar(50) NOT NULL,
 	description varchar NOT NULL,
 	user_id INT REFERENCES users(id),
 	specalization_id int REFERENCES specialization(id),
-	contact_me TEXT NOT NULL
+	contact_me VARCHAR NOT NULL
 );
 
 CREATE TABLE requirement (
-	id SERIAL NOT NULL PRIMARY KEY ,
-	text TEXT NOT NULL ,
+	id SERIAL  PRIMARY KEY ,
+	text VARCHAR NOT NULL ,
 	prop_id INT REFERENCES proposal(id)
 );
 
