@@ -11,7 +11,7 @@ Making community website to connect freelancers together to be able to cooperate
 ----
 
 ### **User Story** : 
- #### As a user
+ #### As a freelancer
   * I can login to my account.
   * I can signup to the community website.
   * I can create an account.
@@ -27,18 +27,19 @@ Making community website to connect freelancers together to be able to cooperate
   ----
 ### **How to run website locally** : 
  * Clone this repository
-* Run ```javascript npm i ```
+* Run ``` npm i ```
 * Create a ```.env``` file
-* Add ```javascript DB_URL```.
-* run ```javascript npm start``` to run the project
+* Add ``` DB_URL```.
+* run ``` npm start``` to run the project
 ---
 
 ### **How to run tests** :  
+run ```npm test``` in your terminal.
 
 --- 
 
 ### **Database Schema** : 
-![]() 
+![](https://i.imgur.com/aEnpCBq.png)
 --- 
 
 
@@ -52,4 +53,11 @@ Making community website to connect freelancers together to be able to cooperate
   ---
 
 ###  See prototype here : [Gaza Freelancing Community](https://www.figma.com/proto/LnsxHtJluP3LHhyxXrs7i4Xg/GFC?node-id=12%3A2&scaling=min-zoom)
+ ---
+ ### **Our Team** : 
+  We are 3AF team 
+   * Anies Al-rayyes
+   * Ahmed Al-Alami
+   * Angham Aabed
+   * Fatm Siam
 
