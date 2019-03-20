@@ -2,7 +2,7 @@
   "name": "gaza-freelancing-community",
   "version": "1.0.0",
   "description": "### **Problem** : Freelancer has a big job or job with new technology and needs a team to work with him to accomplish his job.",
-  "main": "index.js",
+  "main": "src/index.js",
   "directories": {
     "test": "test"
   },
@@ -31,5 +31,7 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "nodemon": "^1.18.10"
+  
   }
 }
+
