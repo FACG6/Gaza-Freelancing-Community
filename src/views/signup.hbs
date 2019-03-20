@@ -1,4 +1,75 @@
-<div>
-    hello from sign up
+<div class="signUpContainer">
+   <h1>Sign Up</h1>
+   <div class="section1">
+      <div class="firstname">
+         <label for="firstname">First Name :
+         <input class="userfirstname" type="text" id="firstname" placeholder="Enter Your First Name" required>
+         </label>
+      </div>
+      <div class="lastname">
+         <label for="lastname">Last Name :
+         <input class="userlirstname" type="text" name='lastname' id="lastname" placeholder="Enter Your Last Name" required>
+         </label>
+      </div>
+      <div class="mobile">
+         <label for="mobile"> Mobile NO. : 
+         <input class="fields" type="text" name='mobile' id="mobile" placeholder="Enter Your Mobile Number" required>
+         </label>
+      </div>
+      <div class="email">
+         <label for="email">E-mail : 
+         <input class="userEmail" type="text" name='email' id="email" placeholder="example@hotmail.com" required>
+         </label>
+      </div>
+      <input type="submit" value="Next" id="next1">
+      <p> You already have an account ? <a href="/login">Sign In</a> </p>
+   </div>
+   <div class="section2">
+      <div class="category">
+         <label> Category : </label>
+         <select class="categoryFields">
+            <option>  </option>
+            <option> Web Developer </option>
+            <option> UX/UI Designer </option>
+            <option> Translator </option>
+            <option> System Analyst </option>
+         </select>
+      </div>
+      <div class="specialization">
+         <label> Specialization : </label>
+         <select class="specializationFields">
+            <option> </option>
+            {{#each specId}}
+            <option> {{this}}</option>
+            {{/each}}
+         </select>
+      </div>
+      <div class="socialUrl">
+         <label for="userUrl">E-mail : 
+         <input class="userUrl" type="text" name='userUrl' id="userUrl" placeholder="Example: https://github.com/Someone" required>
+         </label>
+      </div>
+      <div class="photoUrl">
+         <label for="userPhoto">E-mail : 
+         <input class="userPhoto" type="text" name='userPhoto' id="userPhoto" placeholder="Enter Your Photo Url" required>
+         </label>
+      </div>
+      <input type="submit" value="Back" id="back1">
+      <input type="submit" value="Next" id="next2">
+   </div>
+   <div class="section3">
+      <div class="password">
+         <label for="p=ass">Password
+         <input class="userPassword" type="password" name='pass' id="password" placeholder="Enter Your Password" required>
+         </label>
+      </div>
+      <div class="password">
+         <label for="confirmPass">Confirm Your Password 
+         <input class="confirmPass" type="password" name='confirmPass' id="confirmPass" placeholder="Confirm Your Password" required>
+         </label>
+      </div>
+      <input type="submit" value="Back" id="back2">
+      <input type="submit" value="Sign Up" id="signUpBtn">
+   </div>
 </div>
 
