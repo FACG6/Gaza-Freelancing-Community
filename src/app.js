@@ -2,9 +2,9 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const { join } = require('path');
+const router = require('./controllers/index');
 
 const app = express();
-const router = require('./controllers/index');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
