@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/FACG6/Gaza-Freelancing-Community/issues"
   },
-  "homepage": "https://github.com/FACG6/Gaza-Freelancing-Community#readme"
+  "homepage": "https://github.com/FACG6/Gaza-Freelancing-Community#readme",
+  "dependencies": {
+    "core-js": "^3.0.0",
+    "eslint": "^5.15.3",
+    "joi-browser": "^13.4.0"
+  }
 }
