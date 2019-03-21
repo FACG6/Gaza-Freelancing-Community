@@ -1,16 +1,16 @@
-const firstStepDiv = document.getElementsByClassName(null,'section1');
-const secondStepDiv = document.getElement(null,'section1');
-const thirdStepDiv = getElement(null,'section3');
-const confirmedPassword = getElement('val','confirmPass');
+const firstStepDiv = document.getElementsByClassName(null, 'section1');
+const secondStepDiv = document.getElement(null, 'section1');
+const thirdStepDiv = getElement(null, 'section3');
+const confirmedPassword = getElement('val', 'confirmPass');
 const { validate, ToggleDisplay, getElementById } = require('./helpers/signupFunctions');
 const signupData = {};
 
 getElement(null, 'next1').addEventListener('click', () => {
     const firstStepfields = {
-        firstName: getElement('val','userfirstname'),
-        lastName: getElement('val','userlirstname'),
-        mobile: getElement('val','mobile'),
-        email: getElement('val','email'),
+        firstName: getElement('val', 'userfirstname'),
+        lastName: getElement('val', 'userlirstname'),
+        mobile: getElement('val', 'mobile'),
+        email: getElement('val', 'email'),
     };
     const firstStepValidationRegex = [/[a-z]{3,10}/g, /[a-z]{3,10}/g, /^(\+\d{1,3}[- ]?)?\d{9}$/, /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/];
     validate(firstStepfields, firstStepValidationRegex, (trueOrFalse) => {
@@ -22,10 +22,10 @@ getElement(null, 'next1').addEventListener('click', () => {
 });
 getElement(null, 'next2').addEventListener('click', () => {
     const secondStepfields = {
-        field: getElement('val','categoryFields'),
-        specialization: getElement('val','specializationFields'),
-        freeLanceURL: getElement('val','userUrl'),
-        photoURL: getElement('val','userPhoto'),
+        field: getElement('val', 'categoryFields'),
+        specialization: getElement('val', 'specializationFields'),
+        freeLanceURL: getElement('val', 'userUrl'),
+        photoURL: getElement('val', 'userPhoto'),
     };
     const secondStepValidationRegex = [/^[a-zA-Z\s\D+]/g, /^[a-zA-Z\s\D+]/g, /http(s)?:\/\/([\w]+\.)?[A-z0-9_-]+\.com\/[A-z0-9_-]+/, /^https?:\/\/([\w]||[-_.])+\.[a-z]{2,4}(\/||[\w-_])*\.(png|jpe?g||gif)$/];
     validate(secondStepfields, secondStepValidationRegex, (trueOrFalse) => {
@@ -38,9 +38,9 @@ getElement(null, 'next2').addEventListener('click', () => {
 getElement(null, 'back1').addEventListener('click', () => {
     ToggleDisplay(secondStepDiv, firstStepDiv);
 });
-getElement(null,'signUpBtn').addEventListener('click', () => {
+getElement(null, 'signUpBtn').addEventListener('click', () => {
     const thirdStepfields = {
-        password: getElement('val','userPassword')
+        password: getElement('val', 'userPassword')
     };
     const thirdStepValidationRegex = [/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/g];
     if (password === confirmedPassword) {
@@ -61,7 +61,7 @@ getElement(null,'signUpBtn').addEventListener('click', () => {
                             window.location.href = '/login';
                         }
                     })
-                    .catch(e => {
+                    .catch(() => {
                         swal(text: 'Error, please try again..', type: "warning");
                     });
             }

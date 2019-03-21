@@ -7,7 +7,10 @@ const validate = (field, regex, cb) => {
         }
     }
     if (notAccepteable.length > 0) {
-        swal(text: `make sure you fill the following fields ${unaccepteable.join(',')}`, type: "warning");
+        swal({
+            text: `make sure you fill the following fields ${unaccepteable.join(',')}`,
+            type: "warning"
+        });
         return cb(false);
     }
     return cb(true);
@@ -16,10 +19,11 @@ const ToggleDisplay = (prev, next) => {
     prev.style.display = "none";
     next.style.display = "block";
 };
-const getElement = (val,id) => {
+const getElement = (val, id) => {
     let item;
-    if(val){
-    return item = document.getElementById(id).value;}
+    if (val) {
+        return item = document.getElementById(id).value;
+    }
     return item = document.getElementById(id);
 }
-module.exports = { validate, ToggleDisplay, getElement , getBtn};
+module.exports = { validate, ToggleDisplay, getElement, getBtn };
