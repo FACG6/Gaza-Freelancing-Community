@@ -42,11 +42,11 @@ tape('Test checkEmail query function if there is not email match with income ema
 tape('Test checkPassword query function if the income password is match with income password from user', (t) => {
   reBuildDB()
     .then(() => {
-      const pass = '1234';
+      const pass = '$2a$10$VKLLG5vwSXrqAvxLTEUjzOx7.ULrEC6qmEBoijo1J4Rd8CMR3JFTe';
       return checkData.checkPassword(pass);
     })
     .then((result) => {
-      t.equal(result.rows[0].password, '1234', 'the first row should be not empty');
+      t.equal(result.rows[0].password, '$2a$10$VKLLG5vwSXrqAvxLTEUjzOx7.ULrEC6qmEBoijo1J4Rd8CMR3JFTe', 'the first row should be not empty');
       t.end();
     })
     .catch((error) => {
@@ -54,11 +54,10 @@ tape('Test checkPassword query function if the income password is match with inc
     });
 });
 
-
 tape('Test checkPassword query function if the income password is not match with income password from user', (t) => {
   reBuildDB()
     .then(() => {
-      const pass = '12345';
+      const pass = '$2a$10$aD8i4uS.NoFdmocwa58j2uibF.diJecjRIrmrEt7myVV6HkECoK8O';
       return checkData.checkPassword(pass);
     })
     .then((result) => {
