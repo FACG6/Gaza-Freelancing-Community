@@ -62,8 +62,7 @@ tape('Test checkPassword query function if the income password is not match with
       return checkData.checkPassword(pass);
     })
     .then((result) => {
-      console.log(result.rows);
-      t.equal(result.rows[0].pass, undefined, 'the first row should be not empty');
+      t.equal(result.rows.length, 0, 'the first row should be empty');
       t.end();
     })
     .catch((error) => {
