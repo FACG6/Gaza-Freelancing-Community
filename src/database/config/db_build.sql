@@ -49,10 +49,11 @@ INSERT INTO specialization (name,field_id)
 values ('web develpoer',1);
 
 INSERT INTO users (firstname,lastname,email,freelancer_url,photo_url,mobile_number,specalization_id,password)
-values('fatma','siam','f.siam@gmail.com','https://mm.mm.mmmmm','https://mm.mm.mmmmm','05333',1,'123123');
+values('fatma','siam','f.siam@gmail.com','https://www.freelancer.com','https://mm.mm.mmmmm','0599999999',1,'$2a$10$Kf96cHKp/OU.1mNElX7a5OBJ8MImBPVu6B3yQnQqwIgBiAII1jZLa');
 
 INSERT INTO proposal (title,description,user_id,specalization_id,contact_me)
 values ('front-end develpoer','we need a front-end developer to working at project',1,1,'f.siam@gmail.com');
+
 
 INSERT INTO requirement(text,prop_id) 
 values ('full time' ,1), ('react',1);
