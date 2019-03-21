@@ -68,7 +68,7 @@ getElement(null, 'signUpBtn').addEventListener('click', () => {
         });
     }
 });
-getElement(null, 'back2').addEventListener(() => {
+getElement(null, 'back2').addEventListener(('click') => {
     fisrstBack.addEventListener('click', () => {
         ToggleDisplay(thirdStepDiv, secondStepDiv);
     });
