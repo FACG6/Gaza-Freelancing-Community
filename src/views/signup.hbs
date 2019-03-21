@@ -1,14 +1,14 @@
 <div class="signUpContainer">
    <h1>Sign Up</h1>
-   <div class="section1">
+   <form id="section1" class="section1">
       <div class="firstname">
          <label for="firstname">First Name :
-         <input class="userfirstname" type="text" id="firstname" placeholder="Enter Your First Name" required>
+         <input id="userfirstname" class="userfirstname" type="text" id="firstname" placeholder="Enter Your First Name" required>
          </label>
       </div>
       <div class="lastname">
          <label for="lastname">Last Name :
-         <input class="userlirstname" type="text" name='lastname' id="lastname" placeholder="Enter Your Last Name" required>
+         <input id="userlirstname" class="userlirstname" type="text" name='lastname' id="lastname" placeholder="Enter Your Last Name" required>
          </label>
       </div>
       <div class="mobile">
@@ -23,53 +23,50 @@
       </div>
       <input type="submit" value="Next" id="next1">
       <p> You already have an account ? <a href="/login">Sign In</a> </p>
-   </div>
-   <div class="section2">
+   </form>
+   <form id="section2" class="section2">
       <div class="category">
          <label> Category : </label>
-         <select class="categoryFields">
-            <option> 
+         <select id="categoryFields" class="categoryFields">
             {{#each categoryId}}
             <option class="spec" value="{{this.id}}"> {{this.name}}</option>
             {{/each}} 
-            </option>
          </select>
       </div>
       <div class="specialization">
          <label> Specialization : </label>
-         <select class="specializationFields">
-            <option> </option>
-            {{#each specId}}
-            <option class="spec" value="{{this.id}}"> {{this.name}}</option>
+         <select id="specializationFields" class="specializationFields">
+            {{#each specId}} 
+            <option class="spec" value="{{this.id}}"> {{this.name}}</option> 
             {{/each}}
          </select>
       </div>
       <div class="socialUrl">
          <label for="userUrl">LinkedIn, GitHub, etc. profile URL : 
-         <input class="userUrl" type="text" name='userUrl' id="userUrl" placeholder="Example: https://github.com/Someone" required>
+         <input id="userUrl" class="userUrl" type="text" name='userUrl' id="userUrl" placeholder="Example: https://github.com/Someone" required>
          </label>
       </div>
       <div class="photoUrl">
          <label for="userPhoto">Photo URL : 
-         <input class="userPhoto" type="text" name='userPhoto' id="userPhoto" placeholder="Enter Your Photo Url" required>
+         <input id="userPhoto" class="userPhoto" type="text" name='userPhoto' id="userPhoto" placeholder="Enter Your Photo Url" required>
          </label>
       </div>
       <input type="submit" value="Back" id="back1">
       <input type="submit" value="Next" id="next2">
-   </div>
-   <div class="section3">
+   </form>
+   <form id="section3" class="section3">
       <div class="password">
          <label for="p=ass">Password
-         <input class="userPassword" type="password" name='pass' id="password" placeholder="Enter Your Password" required>
+         <input id="userPassword" class="userPassword" type="password" name='pass' id="password" placeholder="Enter Your Password" required>
          </label>
       </div>
       <div class="password">
          <label for="confirmPass">Confirm Your Password 
-         <input class="confirmPass" type="password" name='confirmPass' id="confirmPass" placeholder="Confirm Your Password" required>
+         <input id="confirmPass" class="confirmPass" type="password" name='confirmPass' id="confirmPass" placeholder="Confirm Your Password" required>
          </label>
       </div>
       <input type="submit" value="Back" id="back2">
       <input type="submit" value="Sign Up" id="signUpBtn">
-   </div>
+   </form>
 </div>
 
