@@ -1,9 +1,11 @@
-const tap = require('tape');
+const supertest = require('supertest');
+const test = require('tape');
+const router = require('../src/app');
 
 const reBuild = require('../src/database/config/db_build');
 const { addUser } = require('../src/database/queries/addData');
 
-tap('test add user for firstname', (t) => {
+test('test add user for firstname', (t) => {
   reBuild()
     .then(addUser({
       firstname: 'Ahmed',
@@ -22,7 +24,7 @@ tap('test add user for firstname', (t) => {
     .catch(errr => t.error(errr));
 });
 
-tap('test add user for lastname', (t) => {
+test('test add user for lastname', (t) => {
   reBuild()
     .then(addUser({
       firstname: 'Ahmed',
@@ -41,7 +43,7 @@ tap('test add user for lastname', (t) => {
     .catch(errr => t.error(errr));
 });
 
-tap('test add user for mobile number', (t) => {
+test('test add user for mobile number', (t) => {
   reBuild()
     .then(addUser({
       firstname: 'Ahmed',
@@ -60,7 +62,7 @@ tap('test add user for mobile number', (t) => {
     .catch(errr => t.error(errr));
 });
 
-tap('test add user for city', (t) => {
+test('test add user for city', (t) => {
   reBuild()
     .then(addUser({
       firstname: 'Ahmed',
@@ -77,4 +79,18 @@ tap('test add user for city', (t) => {
       t.end();
     }).catch(err => t.error(err)))
     .catch(errr => t.error(errr));
+});
+
+test('Test Login route ', (t) => {
+  supertest(router)
+    .get('/login')
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((error, res) => {
+      if (error) {
+        t.error(error);
+      }
+      t.equal(typeof res.body, 'object', 'should return type of body object');
+      t.end();
+    });
 });
