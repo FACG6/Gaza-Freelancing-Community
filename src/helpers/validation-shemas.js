@@ -12,6 +12,5 @@ exports.signUpSchema = joi.object().keys({
   specalization_id: joi.number().integer().required(),
   freelancer_url: joi.string().regex(/http(s)?:\/\/([\w]+\.)?[A-z0-9_-]+\.com\/[A-z0-9_-]+/).required(),
   photo_url: joi.string().regex(/^https?:\/\/([\w]||[-_.])+\.[a-z]{2,4}(\/||[\w-_])*\.(png|jpe?g||gif)$/).required(),
-  password: joi.string().regex(/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/g)
-    .required(),
+  password: joi.string().min(8).required(),
 });
