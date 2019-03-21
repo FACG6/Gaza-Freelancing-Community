@@ -4,6 +4,9 @@
    <body>
       {{{body}}}
       {{> footer}}
+      {{#each js}}
+      <script type="text/javascript" src="/js/{{this}}.js"></script>
+      {{/each}}
    </body>
 </html>
 
