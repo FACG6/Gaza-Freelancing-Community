@@ -24,7 +24,7 @@ tape('Test checkEmail query function if there is email match with income email',
     });
 });
 
-tape('Test checkEmail query function if there is no email match with income email', (t) => {
+tape('Test checkEmail query function if there is not email match with income email', (t) => {
   reBuildDB()
     .then(() => {
       const email = 'a.gmail.com';
@@ -51,5 +51,23 @@ tape('Test checkPassword query function if the income password is match with inc
     })
     .catch((error) => {
       t.error(error);
+    });
+});
+
+
+tape('Test checkPassword query function if the income password is not match with income password from user', (t) => {
+  reBuildDB()
+    .then(() => {
+      const pass = '12345';
+      return checkData.checkPassword(pass);
+    })
+    .then((result) => {
+      console.log(result.rows);
+      t.equal(result.rows[0].pass, undefined, 'the first row should be not empty');
+      t.end();
+    })
+    .catch((error) => {
+      t.error(error);
+      t.end();
     });
 });
