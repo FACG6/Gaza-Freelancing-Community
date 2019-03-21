@@ -7,11 +7,11 @@ tape('tape test', (t) => {
   t.end();
 });
 
-tape('Test checkEmail query function', (t) => {
+tape('Test checkEmail query function if there is email match with income email', (t) => {
   reBuildDB()
     .then(() => {
       const userEmail = {
-        email: 'a.gmail.com',
+        email: 'aa.gmail.com',
       };
       return checkEmail(userEmail);
     })
@@ -23,3 +23,19 @@ tape('Test checkEmail query function', (t) => {
       t.error(error);
     });
 });
+
+tape('Test checkEmail query function if there is no email match with income email', (t) => {
+  reBuildDB()
+    .then(() => {
+      const email = 'a.gmail.com';
+      return checkEmail(email);
+    })
+    .then((result) => {
+      t.equal(result.rows[0].email, 'a.gmail.com', 'the first row should be not empty');
+      t.end();
+    })
+    .catch((error) => {
+      t.error(error);
+    });
+});
+
