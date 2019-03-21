@@ -16,4 +16,10 @@ const ToggleDisplay = (prev, next) => {
     prev.style.display = "none";
     next.style.display = "block";
 };
-module.exports = { validate, ToggleDisplay };
+const getElement = (val,id) => {
+    let item;
+    if(val){
+    return item = document.getElementById(id).value;}
+    return item = document.getElementById(id);
+}
+module.exports = { validate, ToggleDisplay, getElement , getBtn};

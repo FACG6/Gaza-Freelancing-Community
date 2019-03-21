@@ -1,31 +1,16 @@
-const firstStepDiv = document.getElementsByClassName('section1');
-const secondStepDiv = document.getElementsByClassName('section1');
-const thirdStepDiv = document.getElementsByClassName('section2');
-const firstName = document.getElement('firstName');
-const lastName = document.getElementById('lastName');
-const mobile = document.getElementById('mobile');
-const email = document.getElementById('email');
-const firstNext = document.getElementById('next1');
-const secondNext = document.getElementById('next2');
-const fisrstBack = document.getElementById('back1');
-const secondBack = document.getElementById('back2');
-const field = documet.getElementById('field');
-const specialization = document.getElementById('specialization');
-const freeLanceURL = document.getElementById('freeLanceURL');
-const photoURL = document.getElementById('photoURL');
-const password = document.getElementById('password');
-const confirmedPassword = document.getElementById('confirmedPassword');
-const signUp = document.getElementById('signUp');
-const { validate, ToggleDisplay } = require('./modules/signupFunctions');
+const firstStepDiv = document.getElementsByClassName(null,'section1');
+const secondStepDiv = document.getElement(null,'section1');
+const thirdStepDiv = getElement(null,'section3');
+const confirmedPassword = getElement('val','confirmPass');
+const { validate, ToggleDisplay, getElementById } = require('./modules/signupFunctions');
 const signupData = {};
-const Error = '';
 
-firstNext.addEventListener('click', () => {
+getElement(null, 'next1').addEventListener('click', () => {
     const firstStepfields = {
-        firstName: firstName.value,
-        lastName: lastName.value,
-        mobile: mobile.value,
-        email: email.value,
+        firstName: getElement('val''userfirstname'),
+        lastName: getElement('val','userlirstname'),
+        mobile: getElement('val','mobile'),
+        email: getElement('val','email'),
     };
     const firstStepValidationRegex = [/[a-z]{3,10}/g, /[a-z]{3,10}/g, /^(\+\d{1,3}[- ]?)?\d{9}$/, /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/];
     validate(firstStepfields, firstStepValidationRegex, (trueOrFalse) => {
@@ -35,12 +20,12 @@ firstNext.addEventListener('click', () => {
         }
     });
 });
-secondNext.addEventListener('click', () => {
+getElement(null, 'next2').addEventListener('click', () => {
     const secondStepfields = {
-        field: field.value,
-        specialization: specialization.value,
-        freeLanceURL: freeLanceURL.value,
-        photoURL: photoURL.value,
+        field: getElement('val','categoryFields'),
+        specialization: getElement('val','specializationFields'),
+        freeLanceURL: getElement('val','userUrl'),
+        photoURL: getElement('val','userPhoto'),
     };
     const secondStepValidationRegex = [/^[a-zA-Z\s\D+]/g, /^[a-zA-Z\s\D+]/g, /http(s)?:\/\/([\w]+\.)?[A-z0-9_-]+\.com\/[A-z0-9_-]+/, /^https?:\/\/([\w]||[-_.])+\.[a-z]{2,4}(\/||[\w-_])*\.(png|jpe?g||gif)$/];
     validate(secondStepfields, secondStepValidationRegex, (trueOrFalse) => {
@@ -50,39 +35,41 @@ secondNext.addEventListener('click', () => {
         }
     });
 });
-fisrstBack.addEventListener('click', () => {
+getElement(null, 'back1').addEventListener('click', () => {
     ToggleDisplay(secondStepDiv, firstStepDiv);
 });
-signUp.addEventListener('click', () => {
+getElement(null,'signUpBtn').addEventListener('click', () => {
     const thirdStepfields = {
-        password: password.value
+        password: getElement('val','userPassword')
     };
     const thirdStepValidationRegex = [/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/g];
-    validate(secondStepfields, secondStepValidationRegex, (trueOrFalse) => {
-        if (trueOrFalse) {
-            signupData = Object.assign(signupData, secondStepfields);
-            fetch('/signup', {
-                method: 'POST',
-                credentials: 'same-origin',
-                body: JSON.stringify(signupData),
-                headers: { 'Content-Type': 'application/json' },
-            })
-                .then(res => res.json())
-                .then((res) => {
-                    if (res.error) {
-                        error.textContent = res.error;
-                    } else {
-                        window.location.href = '/login';
-                    }
+    if (password === confirmedPassword) {
+        validate(thirdStepfields, thirdStepValidationRegex, (trueOrFalse) => {
+            if (trueOrFalse) {
+                signupData = Object.assign(signupData, thirdStepfields);
+                fetch('/signup', {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    body: JSON.stringify(signupData),
+                    headers: { 'Content-Type': 'application/json' },
                 })
-                .catch(e => {
-                    swal(text: 'Error, please try again..', type: "warning");
-                });
-        }
-    });
+                    .then(res => res.json())
+                    .then((res) => {
+                        if (res.error) {
+                            swal(text: `${res.error}`, type: "warning");
+                        } else {
+                            window.location.href = '/login';
+                        }
+                    })
+                    .catch(e => {
+                        swal(text: 'Error, please try again..', type: "warning");
+                    });
+            }
+        });
+    }
 });
-secondBack.addEventListener(()=>{
+getElement(null, 'back2').addEventListener(() => {
     fisrstBack.addEventListener('click', () => {
-        ToggleDisplay(thirdStepDiv,secondStepDiv);
+        ToggleDisplay(thirdStepDiv, secondStepDiv);
     });
 });
