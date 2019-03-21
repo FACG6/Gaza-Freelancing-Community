@@ -2,7 +2,7 @@ const firstStepDiv = document.getElementsByClassName(null, 'section1');
 const secondStepDiv = document.getElement(null, 'section1');
 const thirdStepDiv = getElement(null, 'section3');
 const confirmedPassword = getElement('val', 'confirmPass');
-const { validate, ToggleDisplay, getElementById } = require('./helpers/signupFunctions');
+const { validate, ToggleDisplay, getElement } = require('./helpers/signupFunctions');
 const signupData = {};
 
 getElement(null, 'next1').addEventListener('click', () => {
