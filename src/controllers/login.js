@@ -7,3 +7,12 @@ exports.get = (request, response) => {
   });
 };
 
+exports.post = (request, response) => {
+  console.log('jjjjj');
+  
+  // console.log(request.body);
+  const {email, password} = request.body;
+  console.log(email);
+  
+
+};
