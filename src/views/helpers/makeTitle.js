@@ -1,5 +1,3 @@
-const pageTitle = (title) => {
-  `${title} | Gaza Freelancing Community`;
-};
+const pageTitle = (title) =>  { return `${title} | Gaza Freelancing Community`; };
 
 module.exports = pageTitle;
