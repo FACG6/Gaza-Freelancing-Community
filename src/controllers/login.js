@@ -5,6 +5,6 @@ exports.get = (request, response) => {
     js: ['helpers/collectData', 'login'],
     css: ['login'],
     layout: 'login_signup',
-    title: pageTitle.titleName('login'),
+    title: pageTitle.titleName('Login'),
   });
 };
