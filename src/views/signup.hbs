@@ -1,4 +1,71 @@
 <div>
-    hello from sign up
+   <h1>Sign Up</h1>
+   <form id="user-info">
+      <div>
+         <label for="firstname">First Name :
+            <input id="firstname" type="text" placeholder="Enter Your First Name" required>
+         </label>
+      </div>
+      <div>
+         <label for="lastname">Last Name :
+            <input id="lastname" type="text" name='lastname' placeholder="Enter Your Last Name" required>
+         </label>
+      </div>
+      <div>
+         <label for="mobile"> Mobile NO. : 
+            <input type="text" name='mobile' id="mobile" placeholder="Enter Your Mobile Number" required>
+         </label>
+      </div>
+      <div>
+         <label for="email">E-mail : 
+            <input type="text" name='email' id="email" placeholder="example@hotmail.com" required>
+         </label>
+      </div>
+         <input type="submit" value="Next" id="next1">
+      <p> You already have an account ? <a href="/login">Sign In</a> </p>
+   </form>
+   <form id="contacts-info">
+      <div>
+         <label> Category : </label>
+         <select id="category-fields">
+            {{#each categoryId}}
+            <option value="{{this.id}}"> {{this.name}}</option>
+            {{/each}}
+         </select>
+      </div>
+      <div>
+         <label> Specialization : </label>
+         <select id="specialization-fields">
+            {{#each specId}} 
+            <option value="{{this.id}}"> {{this.name}}</option>
+            {{/each}}
+         </select>
+      </div>
+      <div>
+         <label for="user-url">LinkedIn, GitHub, etc. profile URL : 
+            <input id="user-url" type="text" name='user-url' placeholder="Example: https://github.com/Someone" required>
+         </label>
+      </div>
+      <div>
+         <label for="user-photo">Photo URL : 
+            <input id="user-photo" type="text" name='user-photo' placeholder="Enter Your Photo Url" required>
+         </label>
+      </div>
+      <input type="submit" value="Back" id="back1">
+      <input type="submit" value="Next" id="next2">
+   </form>
+   <form id="confirm-info">
+      <div>
+         <label for="password">Password
+         <input id="password" type="password" name='pass' placeholder="Enter Your Password" required>
+         </label>
+      </div>
+      <div >
+         <label for="confirm-pass">Confirm Your Password 
+         <input type="password" name='confirm-pass' id="confirm-pass" placeholder="Confirm Your Password" required>
+         </label>
+   </form>
+   <input type="submit" value="Back" id="back2">
+   <input type="submit" value="Sign Up" id="signup-btn">
+   </div>
 </div>
-
