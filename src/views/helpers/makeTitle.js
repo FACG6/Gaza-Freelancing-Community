@@ -1,3 +1,1 @@
-const pageTitle = (title) =>  { return `${title} | Gaza Freelancing Community`; };
-
-module.exports = pageTitle;
+module.exports = { titleName: (pageTitle) => { return `${pageTitle} | Gaza Freelancing Community`; } };
