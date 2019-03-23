@@ -9,14 +9,9 @@ tape('tape test', (t) => {
 
 tape('Test checkEmail query function if there is email match with income email', (t) => {
   reBuildDB()
-    .then(() => {
-      const userEmail = {
-        email: 'aa.gmail.com',
-      };
-      return checkEmail(userEmail);
-    })
+    .then(() => checkEmail('aa.gmail.com'))
     .then((result) => {
-      t.equal(result.rows[0], undefined, 'the first row should be empty');
+      t.equal(result.rows[0], [], 'the first row should be empty');
       t.end();
     })
     .catch((error) => {
@@ -26,10 +21,7 @@ tape('Test checkEmail query function if there is email match with income email',
 
 tape('Test checkEmail query function if there is no email match with income email', (t) => {
   reBuildDB()
-    .then(() => {
-      const email = 'a.gmail.com';
-      return checkEmail(email);
-    })
+    .then(() => checkEmail('a.gmail.com'))
     .then((result) => {
       t.equal(result.rows[0].email, 'a.gmail.com', 'the first row should be not empty');
       t.end();
