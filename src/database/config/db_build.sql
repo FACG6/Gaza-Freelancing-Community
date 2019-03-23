@@ -45,4 +45,5 @@ CREATE TABLE requirement (
 INSERT INTO users(firstname, lastname, email, freelancer_url, photo_url, mobile_number, password)
 VALUES ('a', 'b', 'a.gmail.com', 'https://github.com/angham', 'https://www.iconspng.com/image/36709/face-avatar-man-male-handsome-3', '0097234567', '1234');
 
-COMMIT
+COMMIT;
+
