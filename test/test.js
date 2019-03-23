@@ -39,3 +39,7 @@ tape('Test checkEmail query function if there is no email match with income emai
     });
 });
 
+tape('asd', (t) => {
+  t.equal(1, 1, 'dfgd');
+  t.end();
+});

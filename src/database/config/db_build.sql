@@ -21,7 +21,7 @@ CREATE TABLE users (
   freelancer_url varchar NOT NULL,
 	photo_url VARCHAR NOT NULL,
 	birthday TIMESTAMP ,
-	mobile_number INT NOT NULL UNIQUE,
+	mobile_number TEXT NOT NULL UNIQUE,
 	specalization_id INT REFERENCES specialization(id),
   city VARCHAR(20),
 	password VARCHAR NOT NULL
@@ -42,7 +42,20 @@ CREATE TABLE requirement (
 	prop_id INT REFERENCES proposal(id)
 );
 
-INSERT INTO users(firstname, lastname, email, freelancer_url, photo_url, mobile_number, password)
-VALUES ('a', 'b', 'a.gmail.com', 'https://github.com/angham', 'https://www.iconspng.com/image/36709/face-avatar-man-male-handsome-3', '0097234567', '1234');
+INSERT INTO field (name) 
+values ('Developer');
 
-COMMIT
+INSERT INTO specialization (name,field_id) 
+values ('web develpoer',1);
+
+INSERT INTO users (firstname,lastname,email,freelancer_url,photo_url,mobile_number,specalization_id,password)
+values('fatma','siam','f.siam@gmail.com','https://www.freelancer.com','https://mm.mm.mmmmm','0599999999',1,'$2a$10$Kf96cHKp/OU.1mNElX7a5OBJ8MImBPVu6B3yQnQqwIgBiAII1jZLa');
+
+INSERT INTO proposal (title,description,user_id,specalization_id,contact_me)
+values ('front-end develpoer','we need a front-end developer to working at project',1,1,'f.siam@gmail.com');
+
+
+INSERT INTO requirement(text,prop_id) 
+values ('full time' ,1), ('react',1);
+
+COMMIT ;
