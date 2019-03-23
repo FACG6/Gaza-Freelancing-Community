@@ -22,9 +22,9 @@ tape('Test checkEmail query function if there is email match with income email',
 
 tape('Test checkEmail query function if there is no email match with income email', (t) => {
   reBuildDB()
-    .then(() => checkEmail('a.gmail.com'))
+    .then(() => checkEmail('f.siam@gmail.com'))
     .then((result) => {
-      t.equal(result.rows[0].email, 'a.gmail.com', 'the first row should be not empty');
+      t.equal(result.rows[0].email, 'f.siam@gmail.com', 'the first row should be not empty');
       t.end();
     })
     .catch((error) => {

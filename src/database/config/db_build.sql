@@ -58,6 +58,5 @@ values ('front-end develpoer','we need a front-end developer to working at proje
 INSERT INTO requirement(text,prop_id) 
 values ('full time' ,1), ('react',1);
 
-COMMIT ;
 COMMIT;
 
