@@ -3,7 +3,6 @@ const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 
-
 tape('test signup \'GET\' route ', (t) => {
   supertest(router).get('/signup')
     .expect(200)
