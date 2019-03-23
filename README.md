@@ -4,7 +4,7 @@
 
 Freelancer has a big job or job with new technology who needs a team to work with him to accomplish his job.
 
-### **Our Solutione** : 
+### **Our Solution** : 
 
 Making community website to connect freelancers together to be able to cooperate and accomplish jobs to make money.
 
