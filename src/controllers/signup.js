@@ -1,7 +1,7 @@
 const Joi = require('joi');
 const { addUser } = require('../database/queries/addData');
 const hashPassword = require('../helpers/hashPass');
-const { signUpSchema } = require('./../helpers/validation-shemas');
+const { signUpSchema } = require('../helpers/validation-schemes');
 const { checkMobile, checkEmail } = require('../database/queries/getData');
 
 exports.get = (req, res) => {
