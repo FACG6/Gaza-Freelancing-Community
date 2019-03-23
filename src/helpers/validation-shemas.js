@@ -5,7 +5,7 @@ exports.signUpSchema = joi.object().keys({
     .required(),
   lastname: joi.string().alphanum().min(3).max(30)
     .required(),
-  mobile_number: joi.string().required(),
+  mobile_number: joi.string().required().min(10).max(10),
   email: joi.string().email({
     minDomainAtoms: 2,
   }).required(),
