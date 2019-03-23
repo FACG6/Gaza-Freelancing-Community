@@ -1,9 +1,9 @@
 const joi = require('joi');
 
 exports.signUpSchema = joi.object().keys({
-  firstname: joi.string().alphanum().min(3).max(30)
+  firstname: joi.string().regex(/^[a-zA-Z]+$/).min(3).max(30)
     .required(),
-  lastname: joi.string().alphanum().min(3).max(30)
+  lastname: joi.string().regex(/^[a-zA-Z]+$/).min(3).max(30)
     .required(),
   mobile_number: joi.string().required().min(10).max(10),
   email: joi.string().email({
