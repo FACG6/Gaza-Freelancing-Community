@@ -59,3 +59,8 @@ tape('test add user for mobile number', (t) => {
     })
     .catch(errr => t.error(errr));
 });
+
+tape('asd', (t) => {
+  t.equal(1, 1, 'dfgd');
+  t.end();
+});
