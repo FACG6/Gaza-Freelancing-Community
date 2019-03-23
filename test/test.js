@@ -16,6 +16,7 @@ tape('Test checkEmail query function if there is email match with income email',
     })
     .catch((error) => {
       t.error(error);
+      t.end();
     });
 });
 
@@ -28,6 +29,7 @@ tape('Test checkEmail query function if there is no email match with income emai
     })
     .catch((error) => {
       t.error(error);
+      t.end();
     });
 });
 
