@@ -1,12 +1,13 @@
 const bcrypt = require('bcryptjs');
 const getData = require('../../src/database/queries/getData');
+const pageTitle = require('../views/helpers/makeTitle');
 
 exports.get = (request, response) => {
   response.render('login', {
     js: ['/helpers/collectData', 'login'],
     css: ['login'],
     layout: 'login_signup',
-    title: 'Login | Gaza Freelancing Community',
+    title: pageTitle.titleName('login'),
   });
 };
 exports.post = (request, response, next) => {
