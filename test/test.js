@@ -39,7 +39,9 @@ tape('test add user for lastname', (t) => {
       t.equal(res.rows[0].lastname, 'Elalmi', 'must be Elalmi');
       t.end();
     })
-    .catch(errr => t.error(errr));
+    .catch(errr => {
+      t.error(errr);
+      t.end();
 });
 
 tape('test add user for mobile number', (t) => {
@@ -57,7 +59,10 @@ tape('test add user for mobile number', (t) => {
       t.equal(res.rows[0].mobile_number, '12345', 'the mobile_number must be 1234512345');
       t.end();
     })
-    .catch(errr => t.error(errr));
+    .catch((errr) => {
+      t.error(errr);
+      t.end();
+    });
 });
 
 tape('asd', (t) => {
