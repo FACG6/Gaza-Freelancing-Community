@@ -11,17 +11,17 @@ switch (process.env.NODE_ENV) {
 }
 
 const params = parse(DB_URL);
-const [user , password] = params.auth.split(':');
+const [user, password] = params.auth.split(':');
 
 const options = {
-  user, 
-  password, 
+  user,
+  password,
   port: params.port,
   host: params.hostname,
   database: params.pathname.split('/')[1],
   ssl: params.hostname !== 'localhost',
   max: process.env.DB_MAX_CONNECTIONS || 2,
   // return an error after 1 second if connection could not be established
-  connectionTimeoutMillis: 1000
+  connectionTimeoutMillis: 1000,
 };
 module.exports = new Pool(options);
