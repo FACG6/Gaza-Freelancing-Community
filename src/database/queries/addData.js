@@ -8,5 +8,4 @@ const addUser = (userInfo) => {
   };
   return connection.query(queryObj);
 };
-
 module.exports = { addUser };
