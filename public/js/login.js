@@ -8,7 +8,7 @@ btnLogin.addEventListener('click', (e) => {
   const emailV = email.value.trim();
   const passwordV = password.value;
   if (!emailV || !passwordV) {
-    msg.textContent = 'please, enter your email';
+    msg.textContent = 'please, enter your all fields';
   } else {
     const userInfo = {
       email: emailV,
