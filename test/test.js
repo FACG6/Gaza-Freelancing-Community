@@ -2,12 +2,8 @@ const tape = require('tape');
 const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
-const {
-  addUser,
-} = require('../src/database/queries/addData');
-const {
-  checkEmail,
-} = require('./../src/database/queries/getData');
+const { addUser } = require('../src/database/queries/addData');
+const { checkEmail } = require('./../src/database/queries/getData');
 
 tape('Test checkEmail query function if there is email match with income email', (t) => {
   reBuildDB()
@@ -59,6 +55,7 @@ tape('test signup \'GET\' route ', (t) => {
       }
     });
 });
+
 tape('test signup \'GET\' route ', (t) => {
   supertest(router)
     .get('/signup1')
@@ -68,8 +65,10 @@ tape('test signup \'GET\' route ', (t) => {
       if (err) {
         t.error(err);
         t.end();
+      } else {
+        t.equal(typeof res.body, 'object', 'should return type of body object');
+        t.end();
       }
-      t.equal(typeof res.body, 'object', 'should return type of body object');
     });
 });
 
@@ -79,7 +78,7 @@ tape('test signup \'POST\' route ', (t) => {
     firstSection: {
       firstname: 'Fatma',
       lastname: 'siam',
-      mobile_number: '0599559999',
+      mobile_number: '0529999999',
       email: 'ffs.siam@gmail.com',
     },
     secondSection: {
@@ -87,9 +86,7 @@ tape('test signup \'POST\' route ', (t) => {
       freelancer_url: 'https://github.com/fatma',
       photo_url: 'https://www.iconspng.com/image/36709/face-avatar-man-male-handsome-3.jpg',
     },
-    thirdSection: {
-      password: 'Aa123%fgfg',
-    },
+    thirdSection: { password: 'Aa123%fgfg' },
   };
   reBuildDB().then(() => {
     supertest(router)
@@ -97,11 +94,8 @@ tape('test signup \'POST\' route ', (t) => {
       .send(userInfo)
       .expect(201)
       .end((err, res) => {
-        if (err) {
-          t.error(err);
-          t.end();
-        }
-        t.equal(typeof res, 'object', 'should return  object');
+        if (err) t.error(err);
+        else t.equal(typeof res.body, 'object', 'should return  object');
         t.end();
       });
   }).catch((err) => {
@@ -109,6 +103,7 @@ tape('test signup \'POST\' route ', (t) => {
     t.end();
   });
 });
+
 
 tape('test signup \'POST\' route ', (t) => {
   const userInfo = {
@@ -137,7 +132,7 @@ tape('test signup \'POST\' route ', (t) => {
           t.error(err);
           t.end();
         }
-        t.equal(JSON.parse(res.text).Error, ' This Mobile :  0599999999 is already register', 'should return  the mobile valid');
+        t.equal(JSON.parse(res.text).Error, 'Already Used', 'should return  the mobile valid');
         t.end();
       });
   }).catch((err) => {
@@ -173,7 +168,7 @@ tape('test signup \'POST\' route ', (t) => {
           t.error(err);
           t.end();
         }
-        t.equal(JSON.parse(res.text).Error, ' This Email :  f.siam@gmail.com is already register', ' Return Error messeage');
+        t.equal(JSON.parse(res.text).Error, 'Already Used', ' Return Error messeage');
         t.end();
       });
   }).catch((err) => {
@@ -210,7 +205,7 @@ tape('test signup \'POST\' route ', (t) => {
           t.error(err);
           t.end();
         }
-        t.equal(JSON.parse(res.text).Error, ' This Mobile :  0599999999 is already register', ' Return Error messeage');
+        t.equal(JSON.parse(res.text).Error, 'Already Used', ' Return Error messeage');
         t.end();
       });
   }).catch((err) => {
@@ -239,7 +234,7 @@ tape('test add user for firstname', (t) => {
       firstname: 'Ahmed',
       lastname: 'Alami',
       mobile_number: '12345454',
-      email: 'ahmed@gmail.com',
+      email: 'ahmmmmed@gmail.com',
       specalization_id: 1,
       freelancer_url: 'ww.ass.com',
       photo_url: 'www.hhhh.cs',
