@@ -23,19 +23,21 @@ exports.post = (req, res) => {
   const { error } = Joi.validate(userInfo, signUpSchema);
   if (!error) {
     checkEmail(userInfo.email.trim())
-      .then((result) => {
+      .then(result => {
         if (result.rows[0]) {
           res.status(400).send({ Error: ` This Email :  ${result.rows[0].email} is already register` });
         } else {
           return checkMobile(userInfo.mobile_number.trim());
         }
-      }).then((resultmobile) => {
+      })
+      .then((resultmobile) => {
         if (resultmobile.rows[0]) {
           res.status(400).send({ Error: ` This Mobile :  ${resultmobile.rows[0].mobile_number} is already register` });
         } else {
           return hashPassword(userInfo.password.trim());
         }
-      }).then((hashedPass) => {
+      })
+      .then((hashedPass) => {
         userInfo.password = hashedPass;
         return addUser(userInfo);
       })
@@ -43,9 +45,9 @@ exports.post = (req, res) => {
         res.status(201).send({ success: 'Regestration success ...', user: { ...user.firstSection } });
       })
       .catch((err) => {
-        res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
+        res.status(400).send({ Error: 'Bad Request' });
       });
   } else {
-    res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
+    res.status(400).send({ Error: 'Bad Request' } );
   }
 };
