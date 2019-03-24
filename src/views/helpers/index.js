@@ -1,5 +1,3 @@
-const makeTitle = require('./makeTitle');
-
 module.exports = {
-  makeTitle,
+  makeTitle: require('./makeTitle'),
 };
