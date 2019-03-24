@@ -26,5 +26,5 @@ btnLogin.addEventListener('click', (e) => {
       .catch((error) => {
         msg.textContent = error;
       });
-  }
-});
+    }
+  });
