@@ -3,6 +3,6 @@ exports.get = (request, response) => {
     js: ['helpers/collectData', 'login'],
     css: ['login'],
     layout: 'login_signup',
-    title: ('login'),
+    title: 'login',
   });
 };
