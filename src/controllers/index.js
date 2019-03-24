@@ -1,11 +1,12 @@
 const express = require('express');
 const signup = require('./signup');
-const data = require('./data');
+const specialize = require('./specialization');
 
 const router = express.Router();
 
-router.get('/signup', signup.get);
-router.post('/data', data.post);
-router.post('/signup', signup.post);
+router.post('/specialize', specialize);
+router.route('/signup')
+  .get(signup.get)
+  .post(signup.post);
 
 module.exports = router;
