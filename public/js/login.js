@@ -22,9 +22,16 @@ btnLogin.addEventListener('click', (e) => {
         'Content-Type': 'application/json',
       },
     })
-      .then(res => res.json())
-      .catch((error) => {
-        msg.textContent = error;
-      });
+    .then(res => res.json())
+    .then((res) => {
+      if (res.error) {
+        msg.textContent = res.error;
+      } else {
+        window.location.href = '/';
+      }
+    })
+    .catch((err) => {
+      msg.textContent = 'error in request';
+    });
   }
 });
