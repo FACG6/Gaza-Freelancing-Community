@@ -5,6 +5,22 @@ const reBuildDB = require('../src/database/config/db_build');
 const { addUser } = require('../src/database/queries/addData');
 const { checkEmail } = require('./../src/database/queries/getData');
 
+tape('Test logout router', (t) => {
+  supertest(router)
+    .get('/logout')
+    .expect(302)
+    .expect('content-type', 'text/plain; charset=utf-8')
+    .end((err, result) => {
+      if (err) {
+        t.error(err);
+        t.end();
+      } else {
+        t.deepEqual(result.header['set-cookie'], ['jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'], 'should return type of body object');
+        t.end();
+      }
+    })
+});
+
 tape('Test checkEmail query function if there is email match with income email', (t) => {
   reBuildDB()
     .then(() => checkEmail('aa.gmail.com'))
@@ -55,6 +71,23 @@ tape('test signup \'GET\' route ', (t) => {
       }
     });
 });
+
+tape('Test logout router', (t) => {
+  supertest(router)
+    .get('/logouft')
+    .expect(404)
+    .expect('content-type', /html/)
+    .end((err, result) => {
+      if (err) {
+        t.error(err);
+        t.end();
+      } else {
+        t.equal(typeof result.body, 'object', 'should return page not found');
+        t.end();
+      }
+    });
+});
+
 
 tape('test signup \'GET\' route ', (t) => {
   supertest(router)
