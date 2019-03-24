@@ -1,4 +1,4 @@
-const { validate } = require('joi');
+const joi = require('joi');
 const { addUser } = require('../database/queries/addData');
 const hashPassword = require('../helpers/hashPass');
 const { signUpSchema } = require('../helpers/validation-schemes');
@@ -23,7 +23,7 @@ exports.post = (req, res) => {
     ...user.secondSection,
     ...user.thirdSection,
   };
-  const { error } = validate(userInfo, signUpSchema);
+  const { error } = joi.validate(userInfo, signUpSchema);
   if (!error) {
     checkEmail(userInfo.email)
       .then(({ rows: emailUsed }) => {
