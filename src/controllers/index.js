@@ -1,6 +1,7 @@
 const express = require('express');
 const signup = require('./signup');
 const specialize = require('./specialization');
+const login = require('./login');
 
 const router = express.Router();
 
