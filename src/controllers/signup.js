@@ -8,7 +8,7 @@ exports.get = (req, res) => {
   res.render('signup', {
     layout: 'login_signup',
     title: 'signup ',
-    js: ['collectData', 'signup'],
+    js: ['helpers/collectData', 'helpers/singnupFunctions', 'signup'],
     css: ['signup'],
   });
 };
@@ -22,33 +22,27 @@ exports.post = (req, res) => {
   };
   const { error } = Joi.validate(userInfo, signUpSchema);
   if (!error) {
-    checkEmail(userInfo.email)
+    checkEmail(userInfo.email.trim())
       .then((result) => {
         if (result.rows[0]) {
-          res.status(400).send(JSON.stringify({ Error: ` This Email :  ${result.rows[0].email} is already register` }));
+          res.status(400).send({ Error: ` This Email :  ${result.rows[0].email} is already register` });
         } else {
-          checkMobile(userInfo.mobile_number.trim())
-            .then((resultno) => {
-              if (resultno.rows[0]) {
-                res.status(400).send(JSON.stringify({ Error: ` This number :  ${resultno.rows[0].mobile_number} is already register` }));
-              } else {
-                hashPassword(userInfo.password)
-                  .then((hashedPass) => {
-                    userInfo.password = hashedPass;
-                    addUser(userInfo)
-                      .then(() => {
-                        res.status(201).send(JSON.stringify({ success: 'Regestration success ...', user: { ...user.firstSection } }));
-                      })
-                      .catch(() => {
-                        res.status(400).send(JSON.stringify({ Error: 'Bad Request ...' }));
-                      });
-                  });
-              }
-            }).catch(() => {
-              res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
-            });
+          return checkMobile(userInfo.mobile_number.trim());
         }
-      }).catch(() => {
+      }).then((resultmobile) => {
+        if (resultmobile.rows[0]) {
+          res.status(400).send({ Error: ` This Mobile :  ${resultmobile.rows[0].mobile_number} is already register` });
+        } else {
+          return hashPassword(userInfo.password.trim());
+        }
+      }).then((hashedPass) => {
+        userInfo.password = hashedPass;
+        return addUser(userInfo);
+      })
+      .then(() => {
+        res.status(201).send({ success: 'Regestration success ...', user: { ...user.firstSection } });
+      })
+      .catch((err) => {
         res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
       });
   } else {
