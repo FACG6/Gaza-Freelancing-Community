@@ -38,7 +38,6 @@ tape('test add user for mobile number', (t) => {
       t.error(errr);
       t.end();
     });
-
 });
 
 tape('test signup \'GET\' route ', (t) => {
