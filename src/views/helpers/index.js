@@ -1,3 +1,5 @@
+const makeTitle = require('./makeTitle');
+
 module.exports = {
-  makeTitle: require('./makeTitle'),
+  makeTitle,
 };
