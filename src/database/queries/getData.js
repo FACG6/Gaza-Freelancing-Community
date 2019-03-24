@@ -27,4 +27,3 @@ const getSpecalize = (categoryId) => {
 module.exports = {
   checkMobile, checkEmail, getCategories, getSpecalize,
 };
-
