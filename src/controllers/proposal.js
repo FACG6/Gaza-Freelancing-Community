@@ -1,3 +1,4 @@
+
 exports.get = (request, response) => {
   response.render('proposal', {
     layout: 'main',
