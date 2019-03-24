@@ -3,7 +3,7 @@ const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const { join } = require('path');
 const router = require('./controllers/index');
-const helpers = require('./views/helpers/makeTitle');
+const helpers = require('./views/helpers/index');
 
 const app = express();
 
