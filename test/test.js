@@ -9,9 +9,9 @@ tape('test add user for firstname', (t) => {
       lastname: 'Alami',
       mobile_number: '12345454',
       email: 'ahmed@gmail.com',
+      specalization_id: 1,
       freelancer_url: 'ww.ass.com',
       photo_url: 'www.hhhh.cs',
-      specalization_id: 1,
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
@@ -30,9 +30,9 @@ tape('test add user for lastname', (t) => {
       lastname: 'Elalmi',
       mobile_number: '1234567891',
       email: 'ahmed@gmail.com',
+      specalization_id: 1,
       freelancer_url: 'ww.ass.com',
       photo_url: 'www.hhhh.cs',
-      specalization_id: 1,
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
@@ -52,9 +52,9 @@ tape('test add user for mobile number', (t) => {
       lastname: 'Elalmi',
       mobile_number: '12345',
       email: 'ahmed@gmail.com',
+      specalization_id: 1,
       freelancer_url: 'ww.ass.com',
       photo_url: 'www.hhhh.cs',
-      specalization_id: 1,
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
