@@ -32,6 +32,8 @@ exports.post = (request, response, next) => {
       .catch(() => {
         response.status(500).send({ ErrMsg: 'Internal server error' });
       });
+  } else {
+    response.send({ ErrMsg: 'No such email!' });
   }
 };
 exports.get = (request, response) => {

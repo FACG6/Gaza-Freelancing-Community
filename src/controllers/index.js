@@ -8,7 +8,6 @@ const error = require('./error');
 const router = express.Router();
 const { verify } = require('./middlewares/jwtVerification');
 const { createCookie } = require('./middlewares/createCookie');
-const login = require('./login');
 
 router.use(verify);
 router.get('/', (req, res) => {
