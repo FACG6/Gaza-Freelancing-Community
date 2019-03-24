@@ -13,17 +13,18 @@ const checkEmail = (email) => {
   const value = [email];
   return connect.query(sql, value);
 };
-const sections = () => {
-  const sqltext = 'select * from field;';
-  return connect.query(sqltext);
+const getCategories = () => {
+  const sql = 'select * from field;';
+  return connect.query(sql);
 };
-const specialization = (sectionId) => {
-  const query = {
+const getSpecalize = (categoryId) => {
+  const sql = {
     text: 'select id , name  from specialization where field_id = $1',
-    values: [sectionId],
+    values: [categoryId],
   };
-  return connect.query(query);
+  return connect.query(sql);
 };
 module.exports = {
-  checkMobile, checkEmail, sections, specialization,
+  checkMobile, checkEmail, getCategories, getSpecalize,
 };
+
