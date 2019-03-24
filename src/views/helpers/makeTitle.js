@@ -1,1 +1,1 @@
-module.exports = { titleName: (pageTitle) => { return `${pageTitle} | Gaza Freelancing Community`; } };
+module.exports = pageTitle => `${pageTitle} | Gaza Freelancing Community`;
