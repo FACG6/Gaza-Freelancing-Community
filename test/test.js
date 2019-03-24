@@ -3,16 +3,23 @@ const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 
+
 tape('test signup \'GET\' route ', (t) => {
-  supertest(router).get('/signup')
+  supertest(router)
+    .get('/signup')
     .expect(200)
     .expect('content-type', /html/)
     .end((err, res) => {
       if (err) {
         t.error(err);
+        t.end();
+      } else {
+        t.equal(typeof res.body, 'object', 'should return type of body object');
+        t.end();
       }
-      t.equal(typeof res.body, 'object', 'should return type of body object');
     });
+});
+tape('test signup \'GET\' route ', (t) => {
   supertest(router)
     .get('/signup1')
     .expect(404)
@@ -20,6 +27,7 @@ tape('test signup \'GET\' route ', (t) => {
     .end((err, res) => {
       if (err) {
         t.error(err);
+        t.end();
       }
       t.equal(typeof res.body, 'object', 'should return type of body object');
       t.end();
