@@ -4,6 +4,7 @@ const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
 const error = require('./error');
+const home = require('./home');
 
 const router = express.Router();
 
@@ -12,7 +13,7 @@ router.post('/specialize', specialize);
 router.route('/signup')
   .get(signup.get)
   .post(signup.post);
-
+router.get('/', home.get);
 router.get('/logout', logout);
 
 router.use(error.notfound);
