@@ -21,7 +21,7 @@ const options = {
   database: params.pathname.split('/')[1],
   ssl: params.hostname !== 'localhost',
   max: process.env.DB_MAX_CONNECTIONS || 2,
-  // return an error after 1 second if connection could not be established
-  connectionTimeoutMillis: 1000,
+  // return an error after 9 second if connection could not be established
+  connectionTimeoutMillis: 9000,
 };
 module.exports = new Pool(options);
