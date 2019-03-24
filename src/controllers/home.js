@@ -7,7 +7,7 @@ exports.get = (req, res) => {
         proposals: result.rows,
         layout: 'main',
         js: ['helpers/collectData'],
-        css: ['home'],
+        css: 'home',
         title: 'home',
       });
     } else {
