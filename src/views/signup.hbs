@@ -1,72 +1,73 @@
-<div class="signUpContainer">
+<div>
    <h1>Sign Up</h1>
-   <form id="section1" class="section1">
-      <div class="firstname">
+   <form id="user-info">
+      <div>
          <label for="firstname">First Name :
-         <input id="userfirstname" class="userfirstname" type="text" id="firstname" placeholder="Enter Your First Name" required>
+            <input id="firstname" type="text" placeholder="Enter Your First Name" required>
          </label>
       </div>
-      <div class="lastname">
+      <div>
          <label for="lastname">Last Name :
-         <input id="userlirstname" class="userlirstname" type="text" name='lastname' id="lastname" placeholder="Enter Your Last Name" required>
+            <input id="lastname" type="text" name='lastname' placeholder="Enter Your Last Name" required>
          </label>
       </div>
-      <div class="mobile">
+      <div>
          <label for="mobile"> Mobile NO. : 
-         <input class="fields" type="text" name='mobile' id="mobile" placeholder="Enter Your Mobile Number" required>
+            <input type="text" name='mobile' id="mobile" placeholder="Enter Your Mobile Number" required>
          </label>
       </div>
-      <div class="email">
+      <div>
          <label for="email">E-mail : 
-         <input class="userEmail" type="text" name='email' id="email" placeholder="example@hotmail.com" required>
+            <input type="email" name='email' id="email" placeholder="example@hotmail.com" required>
          </label>
       </div>
-      <input type="submit" value="Next" id="next1">
+         <input type="submit" value="Next" id="user-info-next-btn">
       <p> You already have an account ? <a href="/login">Sign In</a> </p>
    </form>
-   <form id="section2" class="section2">
-      <div class="category">
+   <form id="contacts-info">
+      <div>
          <label> Category : </label>
-         <select id="categoryFields" class="categoryFields">
-            {{#each categoryId}}
-            <option class="spec" value="{{this.id}}"> {{this.name}}</option>
-            {{/each}} 
-         </select>
-      </div>
-      <div class="specialization">
-         <label> Specialization : </label>
-         <select id="specializationFields" class="specializationFields">
-            {{#each specId}} 
-            <option class="spec" value="{{this.id}}"> {{this.name}}</option> 
+         <select id="category-fields">
+            {{#each categories}}
+            <option value="{{this.id}}"> {{this.name}}</option>
             {{/each}}
          </select>
       </div>
-      <div class="socialUrl">
-         <label for="userUrl">LinkedIn, GitHub, etc. profile URL : 
-         <input id="userUrl" class="userUrl" type="text" name='userUrl' id="userUrl" placeholder="Example: https://github.com/Someone" required>
+      <div>
+         <label> Specialization : </label>
+         <select id="specialization-fields">
+            {{#each specs}} 
+            <option value="{{this.id}}"> {{this.name}}</option>
+            {{/each}}
+         </select>
+      </div>
+      <div>
+         <label for="user-url">LinkedIn, GitHub, etc. profile URL : 
+            <input id="user-url" type="text" name='user-url' placeholder="Example: https://github.com/Someone" required>
          </label>
       </div>
-      <div class="photoUrl">
-         <label for="userPhoto">Photo URL : 
-         <input id="userPhoto" class="userPhoto" type="text" name='userPhoto' id="userPhoto" placeholder="Enter Your Photo Url" required>
+      <div>
+         <label for="user-photo">Photo URL : 
+            <input id="user-photo" type="text" name='user-photo' placeholder="Enter Your Photo Url" required>
          </label>
       </div>
-      <input type="submit" value="Back" id="back1">
-      <input type="submit" value="Next" id="next2">
+      <input type="submit" value="Back" id="to-user-info">
+      <input type="submit" value="Next" id="to-confirm-info">
    </form>
-   <form id="section3" class="section3">
-      <div class="password">
-         <label for="p=ass">Password
-         <input id="userPassword" class="userPassword" type="password" name='pass' id="password" placeholder="Enter Your Password" required>
+   <form id="confirm-info">
+      <div>
+         <label for="password">Password
+            <input id="password" type="password" name='pass' placeholder="Enter Your Password" required>
          </label>
       </div>
-      <div class="password">
-         <label for="confirmPass">Confirm Your Password 
-         <input id="confirmPass" class="confirmPass" type="password" name='confirmPass' id="confirmPass" placeholder="Confirm Your Password" required>
+      <div>
+         <label for="confirm-pass">Confirm Your Password 
+            <input type="password" name='confirm-pass' id="confirm-pass" placeholder="Confirm Your Password" required>
          </label>
       </div>
-      <input type="submit" value="Back" id="back2">
-      <input type="submit" value="Sign Up" id="signUpBtn">
    </form>
+   <input type="submit" value="Back" id="to-contacts-info">
+   <input type="submit" value="Sign Up" id="signup-btn">
+   </div>
 </div>
 
