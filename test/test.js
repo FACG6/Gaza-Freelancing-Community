@@ -3,11 +3,6 @@ const reBuildDB = require('./../src/database/config/db_build');
 const { addUser } = require('../src/database/queries/addData');
 const checkEmail = require('./../src/database/queries/getData');
 
-tape('tape test', (t) => {
-  t.equal(2, 2, 'pass');
-  t.end();
-});
-
 tape('Test checkEmail query function if there is email match with income email', (t) => {
   reBuildDB()
     .then(() => checkEmail('aa.gmail.com'))
