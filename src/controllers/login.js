@@ -14,18 +14,17 @@ exports.post = (request, response, next) => {
   getData.checkEmail(request.body.email.trim())
     .then((res) => {
       if (res.rows) {
-        bcrypt.compare(request.body.password, res.rows[0].password).then((result) => {
-          if (result) {
-            next();
-          } else {
-            response.send(JSON.stringify({ ErrMsg: 'Wrong password' }));
-          }
-        });
+        return bcrypt.compare(request.body.password, res.rows[0].password);
+      }
+      response.send({ ErrMsg: 'No such email!' });
+    }).then((result) => {
+      if (result) {
+        next();
       } else {
-        response.send(JSON.stringify({ ErrMsg: 'No such email!' }));
+        response.send({ ErrMsg: 'Wrong password' });
       }
     })
     .catch(() => {
-      response.status(500).send(JSON.stringify({ ErrMsg: 'Internal server error' }));
+      response.status(500).send({ ErrMsg: 'Internal server error' });
     });
 };
