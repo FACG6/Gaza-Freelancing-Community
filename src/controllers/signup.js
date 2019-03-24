@@ -1,4 +1,4 @@
-const Joi = require('joi');
+const joi = require('joi');
 const { addUser } = require('../database/queries/addData');
 const hashPassword = require('../helpers/hashPass');
 const { signUpSchema } = require('../helpers/validation-schemes');
@@ -6,15 +6,14 @@ const { checkMobile, checkEmail, getCategories } = require('../database/queries/
 
 exports.get = (req, res) => {
   getCategories()
-  .then(({ rows:categories }) => 
-    res.render('signup', {
+    .then(({ rows: categories }) => res.render('signup', {
       categories,
       layout: 'login_signup',
       title: 'Sign Up',
-      js: ['helpers/collectData','helpers/signup', 'signup'],
+      js: ['helpers/collectData', 'helpers/signup', 'signup'],
       css: ['signup'],
     }))
-  .catch(() => res.status(400).send({ Error: 'Bad Request' }));
+    .catch(() => res.status(400).send({ Error: 'Bad Request' }));
 };
 
 exports.post = (req, res) => {
@@ -24,38 +23,24 @@ exports.post = (req, res) => {
     ...user.secondSection,
     ...user.thirdSection,
   };
-  const { error } = Joi.validate(userInfo, signUpSchema);
+  const { error } = joi.validate(userInfo, signUpSchema);
   if (!error) {
     checkEmail(userInfo.email)
-      .then((result) => {
-        if (result.rows[0]) {
-          res.status(400).send(JSON.stringify({ Error: ` This Email :  ${result.rows[0].email} is already register` }));
-        } else {
-          checkMobile(userInfo.mobile_number.trim())
-            .then((resultno) => {
-              if (resultno.rows[0]) {
-                res.status(400).send(JSON.stringify({ Error: ` This number :  ${resultno.rows[0].mobile_number} is already register` }));
-              } else {
-                hashPassword(userInfo.password)
-                  .then((hashedPass) => {
-                    userInfo.password = hashedPass;
-                    addUser(userInfo)
-                      .then(() => {
-                        res.status(201).send(JSON.stringify({ success: 'Regestration success ...', user: { ...user.firstSection } }));
-                      })
-                      .catch(() => {
-                        res.status(400).send(JSON.stringify({ Error: 'Bad Request ...' }));
-                      });
-                  });
-              }
-            }).catch(() => {
-              res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
-            });
-        }
-      }).catch(() => {
-        res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
-      });
+      .then(({ rows: emailUsed }) => {
+        if (emailUsed[0]) throw new Error('Email Used');
+        else return checkMobile(userInfo.mobile_number);
+      })
+      .then(({ rows: mobileUsed }) => {
+        if (mobileUsed[0]) throw new Error('Mobile Used');
+        else return hashPassword(userInfo.password);
+      })
+      .then(hashedPass => addUser({ ...userInfo, password: hashedPass }))
+      .then(() => res.status(201).send({
+        success: 'Regestration success ...',
+        user: { ...user.firstSection },
+      }))
+      .catch(() => res.status(400).send({ Error: 'Already Used' }));
   } else {
-    res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
+    res.status(400).send({ Error: 'Bad Request' });
   }
 };

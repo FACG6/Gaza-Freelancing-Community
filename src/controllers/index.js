@@ -5,6 +5,7 @@ const login = require('./login');
 
 const router = express.Router();
 
+router.get('/login', login.get);
 router.post('/specialize', specialize);
 router.route('/signup')
   .get(signup.get)
