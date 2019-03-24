@@ -1,4 +1,18 @@
-<div> 
-    Hello from home page
-</div>
+<div>
+    <div>
+        Create new post:
+    </div>
+    <textarea placeholder="Write your proposal...">
 
+        <button><a href="#">post</a></button>
+    </textarea>
+</div>
+<h3>Job Inquiries</h3>
+{{#each proposal}}
+<div>
+    <img src="{{this.photo}}" alt="user photo">
+    <div><span>{{this.firstname}} {{this.lastname}}</span><span>{{this.specName}}</span>
+    <p>{{this.description}}<p>   
+    </div>
+</div>
+{{/each}}
