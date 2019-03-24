@@ -15,7 +15,7 @@ tape('Test logout router', (t) => {
         t.error(err);
         t.end();
       } else {
-        t.equal(typeof result.body, 'object', 'should return type of body object');
+        t.deepEqual(result.header['set-cookie'], ['jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'], 'should return type of body object');
         t.end();
       }
     })
