@@ -326,6 +326,20 @@ tape('test add user for mobile number', (t) => {
     });
 });
 
+tape('Test Home route ', (t) => {
+  supertest(router)
+    .get('/')
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((error, res) => {
+      if (error) {
+        t.error(error);
+      }
+      t.equal(typeof res.body, 'object', 'should return type of body object');
+      t.end();
+    });
+});
+
 tape.onFinish(() => {
   process.exit(0);
 });
