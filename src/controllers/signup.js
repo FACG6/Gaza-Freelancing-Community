@@ -2,20 +2,19 @@ const Joi = require('joi');
 const { addUser } = require('../database/queries/addData');
 const hashPassword = require('../helpers/hashPass');
 const { signUpSchema } = require('../helpers/validation-schemes');
-const { checkMobile, checkEmail, sections } = require('../database/queries/getData');
+const { checkMobile, checkEmail, getCategories } = require('../database/queries/getData');
 
 exports.get = (req, res) => {
-  sections().then((secResult) => {
+  getCategories()
+  .then(({ rows:categories }) => 
     res.render('signup', {
+      categories,
       layout: 'login_signup',
-      title: 'signup',
-      js: ['helpers/collectData', 'signup'],
+      title: 'Sign Up',
+      js: ['helpers/collectData','helpers/signup', 'signup'],
       css: ['signup'],
-      sectionResult: secResult.rows,
-    });
-  }).catch(() => {
-    res.status(400).send(JSON.stringify({ Error: 'Bad Request' }));
-  });
+    }))
+  .catch(() => res.status(400).send({ Error: 'Bad Request' }));
 };
 
 exports.post = (req, res) => {
