@@ -6,6 +6,8 @@ exports.createCookie = (request, response) => {
     .then(res => ({
       id: res.rows[0].id,
       specialization_id: res.rows[0].specalization_id,
+      firstname: res.rows[0].firstname,
+      lastname: res.rows[0].lastname,
     }))
     .then((res) => {
       const token = jwt.sign(res, process.env.SECRET);
