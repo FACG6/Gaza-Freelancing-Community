@@ -3,44 +3,51 @@ const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 
-tape('test signup \'GET\' route ', (t) => {
-  supertest(router).get('/signup')
-    .expect(200)
-    .expect('content-type', /html/)
-    .end((err, res) => {
-      if (err) {
-        t.error(err);
-      }
-      t.equal(typeof res.body, 'object', 'should return type of body object');
-    });
-  supertest(router)
-    .get('/signup1')
-    .expect(404)
-    .expect('content-type', /html/)
-    .end((err, res) => {
-      if (err) {
-        t.error(err);
-      }
-      t.equal(typeof res.body, 'object', 'should return type of body object');
-      t.end();
-    });
-});
+// tape('test signup \'GET\' route ', (t) => {
+//   supertest(router)
+//     .get('/signup')
+//     .expect(200)
+//     .expect('content-type', /html/)
+//     .end((err, res) => {
+//       if (err) {
+//         t.error(err);
+//         t.end();
+//       } else {
+//         t.equal(typeof res.body, 'object', 'should return type of body object');
+//         t.end();
+//       }
+//     });
+// });
+// tape('test signup \'GET\' route ', (t) => {
+//   supertest(router)
+//     .get('/signup1')
+//     .expect(404)
+//     .expect('content-type', /html/)
+//     .end((err, res) => {
+//       if (err) {
+//         t.error(err);
+//       }
+//       console.log(res.body);
+//       t.equal(typeof res.body, 'object', 'should return type of body object');
+//       t.end();
+//     });
+// });
 
 tape('test signup \'POST\' route ', (t) => {
   const userInfo = {
     firstSection: {
-      firstname: 'Angham',
-      lastname: 'Aabed',
-      mobile_number: '0000000',
-      email: 'a@gmail.com',
+      firstname: 'Fatma',
+      lastname: 'siam',
+      mobile_number: '0599559999',
+      email: 'ffs.siam@gmail.com',
     },
     secondSection: {
       specalization_id: 1,
-      freelancer_url: 'https://github.com/angham.com',
+      freelancer_url: 'https://github.com/fatma',
       photo_url: 'https://www.iconspng.com/image/36709/face-avatar-man-male-handsome-3.jpg',
     },
     thirdSection: {
-      password: 'Aa123fgfg',
+      password: 'Aa123%fgfg',
     },
   };
   reBuildDB().then(() => {
@@ -63,18 +70,18 @@ tape('test signup \'POST\' route ', (t) => {
 tape('test signup \'POST\' route ', (t) => {
   const userInfo = {
     firstSection: {
-      firstname: 'Angham',
-      lastname: 'Aabed',
-      mobile_number: 1111,
-      email: 'a@gmail.com',
+      firstname: 'Fatma',
+      lastname: 'siam',
+      mobile_number: '0599999999',
+      email: 'ff.siam@gmail.com',
     },
     secondSection: {
       specalization_id: 1,
-      freelancer_url: 'https://github.com/angham',
+      freelancer_url: 'https://github.com/fatma',
       photo_url: 'https://www.iconspng.com/image/36709/face-avatar-man-male-handsome-3.jpg',
     },
     thirdSection: {
-      password: 'Aa123fgfg',
+      password: 'Aa123%fgfg',
     },
   };
   reBuildDB().then(() => {
@@ -86,7 +93,7 @@ tape('test signup \'POST\' route ', (t) => {
         if (err) {
           t.error(err);
         }
-        t.equal(JSON.parse(res.text).Error, 'Bad Request', 'should return  badRequest');
+        t.equal(JSON.parse(res.text).Error, ' This Mobile :  0599999999 is already register', 'should return  the mobile valid');
         t.end();
       });
   }).catch((err) => {
@@ -99,7 +106,7 @@ tape('test signup \'POST\' route ', (t) => {
     firstSection: {
       firstname: 'Fatma',
       lastname: 'siam',
-      mobile_number: '0000',
+      mobile_number: '0599339999',
       email: 'f.siam@gmail.com',
     },
     secondSection: {
@@ -155,7 +162,7 @@ tape('test signup \'POST\' route ', (t) => {
         if (err) {
           t.error(err);
         }
-        t.equal(JSON.parse(res.text).Error, ' This number :  0599999999 is already register', ' Return Error messeage');
+        t.equal(JSON.parse(res.text).Error, ' This Mobile :  0599999999 is already register', ' Return Error messeage');
         t.end();
       });
   }).catch((err) => {
@@ -164,5 +171,5 @@ tape('test signup \'POST\' route ', (t) => {
 });
 
 tape.onFinish(() => {
-  process.exit();
+  process.exit(0);
 });
