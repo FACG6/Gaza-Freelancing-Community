@@ -1,20 +1,10 @@
 const tape = require('tape');
-<<<<<<< HEAD
-const reBuildDB = require('./../src/database/config/db_build');
-const { addUser } = require('../src/database/queries/addData');
-
-tape('test add user for firstname', (t) => {
-  reBuildDB()
-    .then(() => addUser({
-      firstname: 'Ahmed',
-      lastname: 'Alami',
-      mobile_number: '12345454',
-=======
-const supertest = require('supertest');
-const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 const { addUser } = require('../src/database/queries/addData');
+const supertest = require('supertest');
+const router = require('../src/app');
 const { checkEmail } = require('./../src/database/queries/getData');
+
 
 tape('Test checkEmail query function if there is email match with income email', (t) => {
   reBuildDB()
@@ -35,7 +25,6 @@ tape('test add user for mobile number', (t) => {
       firstname: 'Ahmed',
       lastname: 'Elalmi',
       mobile_number: '12345',
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
       email: 'ahmed@gmail.com',
       specalization_id: 1,
       freelancer_url: 'ww.ass.com',
@@ -43,30 +32,16 @@ tape('test add user for mobile number', (t) => {
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
-<<<<<<< HEAD
-      t.equal(res.rows[0].firstname, 'Ahmed', 'must be Ahmed');
-      t.end();
-    }).catch((err) => {
-      t.error(err);
-=======
       t.equal(res.rows[0].mobile_number, '12345', 'the mobile_number must be 1234512345');
       t.end();
     })
     .catch((errr) => {
       t.error(errr);
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
       t.end();
     });
 });
 
-<<<<<<< HEAD
-tape('test add user for lastname', (t) => {
-  reBuildDB()
-    .then(() => addUser({
-      firstname: 'Ahmed',
-      lastname: 'Elalmi',
-      mobile_number: '1234567891',
-=======
+
 tape('test signup \'GET\' route ', (t) => {
   supertest(router)
     .get('/signup')
@@ -254,7 +229,6 @@ tape('test add user for firstname', (t) => {
       firstname: 'Ahmed',
       lastname: 'Alami',
       mobile_number: '12345454',
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
       email: 'ahmed@gmail.com',
       specalization_id: 1,
       freelancer_url: 'ww.ass.com',
@@ -262,36 +236,20 @@ tape('test add user for firstname', (t) => {
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
-<<<<<<< HEAD
-      t.equal(res.rows[0].lastname, 'Elalmi', 'must be Elalmi');
-      t.end();
-    })
-    .catch((errr) => {
-      t.error(errr);
-=======
       t.equal(res.rows[0].firstname, 'Ahmed', 'must be Ahmed');
       t.end();
     }).catch((err) => {
       t.error(err);
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
       t.end();
     });
 });
 
-<<<<<<< HEAD
 tape('test add user for mobile number', (t) => {
-=======
-tape('test add user for lastname', (t) => {
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
   reBuildDB()
     .then(() => addUser({
       firstname: 'Ahmed',
       lastname: 'Elalmi',
-<<<<<<< HEAD
-      mobile_number: '12345',
-=======
       mobile_number: '1234567891',
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
       email: 'ahmed@gmail.com',
       specalization_id: 1,
       freelancer_url: 'ww.ass.com',
@@ -299,11 +257,7 @@ tape('test add user for lastname', (t) => {
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
-<<<<<<< HEAD
       t.equal(res.rows[0].mobile_number, '12345', 'the mobile_number must be 1234512345');
-=======
-      t.equal(res.rows[0].lastname, 'Elalmi', 'must be Elalmi');
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
       t.end();
     })
     .catch((errr) => {
@@ -311,13 +265,6 @@ tape('test add user for lastname', (t) => {
       t.end();
     });
 });
-
-<<<<<<< HEAD
-tape('asd', (t) => {
-  t.equal(1, 1, 'dfgd');
-  t.end();
-=======
 tape.onFinish(() => {
   process.exit();
->>>>>>> 1f7d4d2429664faf56426f13c840a5110a9dea56
 });
