@@ -27,7 +27,6 @@ tape('test signup \'GET\' route ', (t) => {
       if (err) {
         t.error(err);
       }
-      console.log(res.body);
       t.equal(typeof res.body, 'object', 'should return type of body object');
       t.end();
     });
