@@ -15,7 +15,6 @@ router.route('/signup')
   .post(signup.post);
 router.get('/', home.get);
 router.get('/logout', logout);
-
 router.use(error.notfound);
 router.use(error.serverError);
 module.exports = router;
