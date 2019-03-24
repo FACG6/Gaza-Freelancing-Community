@@ -39,9 +39,10 @@ tape('test add user for lastname', (t) => {
       t.equal(res.rows[0].lastname, 'Elalmi', 'must be Elalmi');
       t.end();
     })
-    .catch(errr => {
+    .catch((errr) => {
       t.error(errr);
       t.end();
+    });
 });
 
 tape('test add user for mobile number', (t) => {
@@ -49,10 +50,11 @@ tape('test add user for mobile number', (t) => {
     .then(() => addUser({
       firstname: 'Ahmed',
       lastname: 'Elalmi',
-      mobile_number: '1234512345',
+      mobile_number: '12345',
       email: 'ahmed@gmail.com',
       freelancer_url: 'ww.ass.com',
       photo_url: 'www.hhhh.cs',
+      specalization_id: 1,
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
