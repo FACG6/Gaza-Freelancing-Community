@@ -1,11 +1,10 @@
 const connect = require('./../config/db_connection');
 
 const getProposal = (specId) => {
-  const sql = 'select * from proposal where specalization_id = $1';
+  const sql = 'SELECT users.firstname, users.specalization_id, users.lastname, users.email, users.freelancer_url, users.photo_url, users.mobile_number, specialization.name, proposal.title,proposal.description, proposal.contact_me from (users join specialization  on users.specalization_id = specialization.id) join proposal on proposal.user_id = users.id where users.specalization_id = $1';
   const values = [specId];
   return connect.query(sql, values);
 };
-
 
 const checkMobile = (mobile) => {
   const query = {
@@ -32,5 +31,5 @@ const getSpecalize = (categoryId) => {
   return connect.query(sql);
 };
 module.exports = {
-  checkMobile, checkEmail, getCategories, getSpecalize, getProposal 
+  checkMobile, checkEmail, getCategories, getSpecalize, getProposal,
 };
