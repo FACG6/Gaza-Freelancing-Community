@@ -24,6 +24,13 @@ const getSpecalize = (categoryId) => {
   };
   return connect.query(sql);
 };
+const getProposalbyUserId = (userid) => {
+  const sql = {
+    text: 'select users.photo_url , users.firstname , users.lastname ,specialization.name , proposal.description  from proposal join users ON users.id = proposal.user_id join specialization ON specialization.id = users.specalization_id  where proposal.user_id = $1',
+    values: [userid],
+  };
+  return connect.query(sql);
+};
 module.exports = {
-  checkMobile, checkEmail, getCategories, getSpecalize,
+  checkMobile, checkEmail, getCategories, getSpecalize, getProposalbyUserId,
 };
