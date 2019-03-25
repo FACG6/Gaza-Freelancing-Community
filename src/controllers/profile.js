@@ -1,7 +1,16 @@
+const { getProposalbyUserId } = require('../database/queries/getData');
+
 exports.get = (req, res) => {
-  res.render('profile', {
-    layout: 'profile',
-    title: 'profile', // passing user name
-    css: ['profile'],
-  });
+  getProposalbyUserId(1)
+    .then(({ rows: proposal }) => {
+      res.render('profile', {
+        layout: 'profile',
+        title: 'profile', // passing user name
+        css: ['profile'],
+        proposal: proposal[0],
+      });
+    })
+    .catch(() => {
+      res.status(400).send('Bad Request ');
+    });
 };
