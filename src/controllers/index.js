@@ -4,6 +4,7 @@ const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
 const error = require('./error');
+const profile = require('./profile');
 
 const router = express.Router();
 
@@ -14,7 +15,7 @@ router.route('/signup')
   .post(signup.post);
 
 router.get('/logout', logout);
-
+router.get('/profile', profile.get);
 router.use(error.notfound);
 router.use(error.serverError);
 module.exports = router;
