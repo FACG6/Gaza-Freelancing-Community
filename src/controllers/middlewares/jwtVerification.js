@@ -10,7 +10,7 @@ exports.verify = (req, res, next) => {
       }
     });
   } else {
-    req.auth = '';
+    req.auth = false;
     next();
   }
 };
