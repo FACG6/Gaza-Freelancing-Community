@@ -1,6 +1,5 @@
 const bcrypt = require('bcryptjs');
 const getData = require('../../src/database/queries/getData');
-const pageTitle = require('../views/helpers/makeTitle');
 const { validationRegex } = require('../../public/js/helpers/signup');
 
 exports.get = (request, response) => {
@@ -8,7 +7,7 @@ exports.get = (request, response) => {
     js: ['/helpers/collectData', 'login'],
     css: ['login'],
     layout: 'login_signup',
-    title: pageTitle.titleName('login'),
+    title: 'Login',
   });
 };
 exports.post = (request, response, next) => {
