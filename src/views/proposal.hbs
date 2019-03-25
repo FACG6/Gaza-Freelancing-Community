@@ -1,26 +1,27 @@
-<div> 
-<img src="{{proposal.photo_url}}" alt="user image">
-<h3 style="display:inline-block">{{ proposal.firstname}} {{ proposal.lastname}}</h3>
-<h4>{{ proposal.name}} </h4>
-</div>
+<div class="proposal" style="width:100%; text-align:center; box-sizing:border-box">
+    <div class="user-info">
+        <div class="left-user-info">
+            <img src="{{proposal.photo_url}}" alt="user image">
+        </div>
+        <div class="right-user-info">
+            <h2 class="username"> {{ proposal.firstname}} {{ proposal.lastname}} </h2>
+            <h2 class="specalization-name"> {{ proposal.name}} </h2>
+        </div>
+    </div>
 
-<div>
-    <h2>{{proposal.title}}</h2>
-    <p>{{proposal.description}}</p>
-</div>
+    <div class="description">
+        <h2 class="proposal-title"> {{proposal.title}} </h2>
+        <p class="proposal-description"> {{proposal.description}} </p>
+    </div>
 
-<div>
-    <h2> {{proposal.contact_me}} </h2>
-</div>
+    <div class="requierments">
+        {{#each requierment}}
+            <p> {{requierment.text}} </p>
+        {{/each}}
+    </div>
 
-{{!-- { firstname: 'fatma',
-  specalization_id: 1,
-  lastname: 'siam',
-  email: 'f.siam@gmail.com',
-  freelancer_url: 'https://mm.mm.mmmmm',
-  photo_url: 'https://mm.mm.mmmmm',
-  mobile_number: '0599999999',
-  name: 'web develpoer',
-  title: 'front-end develpoer',
-  description: 'we need a front-end developer to working at project',
-  contact_me: 'f.siam@gmail.com' } --}}
+    <div class="contact-info">
+        <span> {{proposal.contact_me}} </span>
+        <span> {{proposal.mobile_number}} </span>
+    </div>
+</div>
