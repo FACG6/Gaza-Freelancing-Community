@@ -66,6 +66,7 @@ button {
 }
 button:hover {
   background: rgb(3, 131, 148);
+  transition: background .3s;
 }
 p {
   color: #333;
@@ -79,6 +80,6 @@ a {
 }
 a:hover {
   color: rgb(3, 131, 148);
-  transition: .2s;
+  transition: color .3s;
   text-decoration: underline;
 }
