@@ -4,9 +4,11 @@ const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
 const error = require('./error');
+const authorizatin = require('../middlewares/authorization');
 
 const router = express.Router();
 
+router.use(authorizatin);
 router.get('/login', login.get);
 router.post('/specialize', specialize);
 router.route('/signup')
