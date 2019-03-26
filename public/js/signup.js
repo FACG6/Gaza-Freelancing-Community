@@ -69,7 +69,6 @@ getElement('signup-btn').addEventListener('click', (e) => {
   userInfo.thirdSection = {
     password: getElement('password', 'val'),
   };
-  console.log(userInfo);
   if (userInfo.thirdSection['password'] === getElement('confirm-pass', 'val')) {
     validate(userInfo.thirdSection, validationRegex.thirdStepValidationRegex, (trueOrFalse) => {
       if (trueOrFalse) {
@@ -84,7 +83,6 @@ getElement('signup-btn').addEventListener('click', (e) => {
           .then(res => res.json())
           .then((res) => {
             if (res.Error) {
-              console.log(res.Error);
               Swal.fire({
                 title: '<i>Oops</i>',
                 html: `${res.Error}`,
