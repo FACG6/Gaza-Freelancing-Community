@@ -4,17 +4,20 @@ const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
 const error = require('./error');
-const authorization = require('../middlewares/authorization');
+const { authorization, permission } = require('../middlewares/authorization');
 
 const router = express.Router();
 
-router.get('/login', login.get);
-router.use(authorization);
 router.post('/specialize', specialize);
+
 router.route('/signup')
-  .get(signup.get)
+  .get(permission, signup.get)
   .post(signup.post);
 
+router.route('/login')
+  .get(permission, login.get);
+
+router.use(authorization);
 router.get('/logout', logout);
 
 router.use(error.notfound);
