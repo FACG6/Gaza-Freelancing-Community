@@ -1,4 +1,5 @@
 const express = require('express');
+const auth = require('../middlewares/authentication');
 const logout = require('./logout');
 const signup = require('./signup');
 const specialize = require('./specialization');
@@ -6,7 +7,6 @@ const login = require('./login');
 const error = require('./error');
 
 const router = express.Router();
-const auth = require('../middlewares/authentication');
 
 router.use(auth);
 

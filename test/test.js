@@ -360,7 +360,7 @@ tape('testing Login Post Route For Invalid Eamil ', (t) => {
           t.error(err);
           t.end();
         }
-        t.equal((JSON.parse(res.text).error), 'Error: Invalid Email ', ' Return Error messeage');
+        t.equal((JSON.parse(res.text).error), 'Check Email ', ' Return Error messeage');
         t.end();
       });
   }).catch((err) => {
@@ -382,7 +382,7 @@ tape('testing Login Post Route For Error Password ', (t) => {
           t.error(err);
           t.end();
         }
-        t.equal(JSON.parse(res.text).error, 'Error: The password you entered is wrong', ' Return Error messeage');
+        t.equal(JSON.parse(res.text).error, 'Check Password', ' Return Error messeage');
         t.end();
       });
   }).catch((err) => {
