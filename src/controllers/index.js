@@ -6,15 +6,13 @@ const login = require('./login');
 const error = require('./error');
 
 const router = express.Router();
-const { verify } = require('../middlewares/jwtVerification');
-const { createCookie } = require('../middlewares/createCookie');
+const auth = require('../middlewares/authentication');
 
-router.use(verify);
-router.get('/', (req, res) => {
-  res.send('<h1 style="text-align:center; color:red; padding-top:100px">Hello from Gaza Freelancing Community<br><br>GFC</h1>');
-});
-router.post('/login', login.post, createCookie);
-router.get('/login', login.get);
+router.use(auth);
+
+router.route('/login')
+  .get(login.get)
+  .post(login.post);
 router.post('/specialize', specialize);
 router.route('/signup')
   .get(signup.get)
