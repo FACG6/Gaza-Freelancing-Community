@@ -1,32 +1,35 @@
-const firstStepDiv = getElement(null, 'user-info');
-const secondStepDiv = getElement(null, 'contacts-info');
-const thirdStepDiv = getElement(null, 'confirm-info');
-const confirmedPassword = getElement('val', 'confirm-pass');
+const firstStepDiv = getElement('user-info');
+const secondStepDiv = getElement('contacts-info');
+const thirdStepDiv = getElement('confirm-info');
+const confirmedPassword = getElement('confirm-pass','val');
+const fields = document.getElementById("category-fields");
+const specializations = document.getElementById("specialization-fields");
 
 const userInfo = {};
 secondStepDiv.style.display = 'none';
 thirdStepDiv.style.display = 'none';
-getElement(null, 'user-info-next-btn').addEventListener('click', (e) => {
+
+getElement('user-info-next-btn').addEventListener('click', (e) => {
   e.preventDefault();
-  userInfo.firstSection = {
-    firstName: getElement('val', 'firstname'),
-    lastName: getElement('val', 'lastname'),
-    mobile: getElement('val', 'mobile'),
-    email: getElement('val', 'email'),
-  };
+    userInfo.firstSection = {
+      firstName: getElement('firstname', 'val'),
+      lastName: getElement('lastname', 'val'),
+      mobile: getElement( 'mobile', 'val'),
+      email: getElement('email', 'val')
+    }
   validate(userInfo.firstSection, validationRegex.firstStepValidationRegex, (trueOrFalse) => {
     if (trueOrFalse) {
       ToggleDisplay(firstStepDiv, secondStepDiv);
     }
   });
 });
-getElement(null, 'to-confirm-info').addEventListener('click', (e) => {
+getElement('to-confirm-info').addEventListener('click', (e) => {
   e.preventDefault();
   userInfo.secondSection = {
-    field: getElement('val', 'category-fields'),
-    specialization: getElement('val', 'specialization-fields'),
-    freeLanceURL: getElement('val', 'user-url'),
-    photoURL: getElement('val', 'user-photo'),
+    field: fields.options[fields.selectedIndex].value,
+    specialization:specializations.options[specializations.selectedIndex].value,
+    freeLanceURL: getElement('user-url','val'),
+    photoURL: getElement('user-photo','val'),
   };
   validate(userInfo.secondSection, validationRegex.secondStepValidationRegex, (trueOrFalse) => {
     if (trueOrFalse) {
@@ -34,16 +37,16 @@ getElement(null, 'to-confirm-info').addEventListener('click', (e) => {
     }
   });
 });
-getElement(null, 'to-contacts-info').addEventListener('click', (e) => {
+getElement('to-user-info').addEventListener('click', (e) => {
   e.preventDefault();
   ToggleDisplay(secondStepDiv, firstStepDiv);
 });
-getElement(null, 'signup-btn').addEventListener('click', (e) => {
+getElement('signup-btn').addEventListener('click', (e) => {
   e.preventDefault();
   userInfo.thirdSection = {
-    password: getElement('val', 'password'),
+    password: getElement('password','val'),
   };
-  if (userInfo.thirdSection[password] === confirmedPassword) {
+  if (userInfo.thirdSection['password'] === getElement('confirm-pass','val')) {
     validate(userInfo.thirdSection, validationRegex.thirdStepValidationRegex, (trueOrFalse) => {
       if (trueOrFalse) {
         fetch('/signup', {
@@ -54,10 +57,10 @@ getElement(null, 'signup-btn').addEventListener('click', (e) => {
         })
           .then(res => res.json())
           .then((res) => {
-            if (res.ErrMsg) {
+            if (res.Error) {
               Swal.fire({
                 title: '<i>Oops</i>',
-                html: `${res.ErrMsg}`,
+                html: `${res.Error}`,
                 confirmButtonText: '<u>ok</u>',
               });
             } else {
@@ -73,9 +76,15 @@ getElement(null, 'signup-btn').addEventListener('click', (e) => {
           });
       }
     });
+  }else{
+    Swal.fire({
+      title: '<i>Oops</i>',
+      html: 'Passwords don\'t match',
+      confirmButtonText: '<u>ok</u>',
+    });
   }
 });
-getElement(null, 'to-contacts-info').addEventListener('click', (e) => {
+getElement('to-contacts-info').addEventListener('click', (e) => {
   e.preventDefault();
   ToggleDisplay(thirdStepDiv, secondStepDiv);
 });

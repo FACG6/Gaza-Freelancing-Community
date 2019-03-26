@@ -20,7 +20,7 @@ const ToggleDisplay = (prev, next) => {
   prev.style.display = 'none';
   next.style.display = 'block';
 };
-const getElement = (val, id) => {
+const getElement = (id,val) => {
   let item;
   if (val) {
     item = document.getElementById(id).value;
@@ -30,8 +30,16 @@ const getElement = (val, id) => {
   return item;
 };
 const validationRegex = {
-  firstStepValidationRegex: [/[a-z]{3,10}/g, /[a-z]{3,10}/g, /^(?=(?:.{7}|.{10}|.{14})$)[0-9]*$/, /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/],
-  secondStepValidationRegex: [/^[a-zA-Z\s\D+]/g, /^[a-zA-Z\s\D+]/g, /http(s)?:\/\/([\w]+\.)?[A-z0-9_-]+\.com\/[A-z0-9_-]+/, /^https?:\/\/([\w]||[-_.])+\.[a-z]{2,4}(\/||[\w-_])*\.(png|jpe?g||gif)$/],
-  thirdStepValidationRegex: [/^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/g],
+  firstStepValidationRegex: [
+    /[a-z]{3,10}/,
+   /[a-z]{3,10}/,
+    /^(?=(?:.{7}|.{10}|.{14})$)[0-9]*$/,
+     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/],
+  secondStepValidationRegex: [
+    /^[0-9]{1,2}/,
+     /^[0-9]{1,2}/,
+      /http(s)?:\/\/([\w]+\.)?[A-z0-9_-]+\.com\/[A-z0-9_-]+/,
+       /^https?:\/\/([\w]||[-_.])+\.[a-z]{2,4}(\/||[\w-_])*\.(png|jpe?g||gif)$/],
+  thirdStepValidationRegex: [
+    /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/g],
 };
-
