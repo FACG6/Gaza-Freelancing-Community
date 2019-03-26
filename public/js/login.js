@@ -1,18 +1,18 @@
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const btnLogin = document.getElementById('btn_login');
-const msg = document.getElementById('msg');
+const loginBtn = document.getElementById('btn_login');
+const errMsg = document.getElementById('msg');
 
-btnLogin.addEventListener('click', (e) => {
+loginBtn.addEventListener('click', (e) => {
   e.preventDefault();
-  const emailV = email.value.trim();
-  const passwordV = password.value;
-  if (!emailV || !passwordV) {
-    msg.textContent = 'please, enter your all fields';
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
+  if (!emailValue || !passwordValue) {
+    errMsg.textContent = 'please, enter your all fields';
   } else {
     const userInfo = {
-      email: emailV,
-      password: passwordV,
+      email: emailValue,
+      password: passwordValue,
     };
     fetch('/login', {
       method: 'POST',
@@ -22,16 +22,16 @@ btnLogin.addEventListener('click', (e) => {
         'Content-Type': 'application/json',
       },
     })
-    .then(res => res.json())
-    .then((res) => {
-      if (res.error) {
-        msg.textContent = res.error;
-      } else {
-        window.location.href = '/';
-      }
-    })
-    .catch((err) => {
-      msg.textContent = 'error in request';
-    });
+      .then(res => res.json())
+      .then((res) => {
+        if (res.error) {
+          errMsg.textContent = res.error;
+        } else {
+          window.location.href = '/';
+        }
+      })
+      .catch(() => {
+        errMsg.textContent = 'Internal Server Error';
+      });
   }
 });
