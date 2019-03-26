@@ -14,3 +14,8 @@ exports.signUpSchema = joi.object().keys({
   photo_url: joi.string().regex(/^https?:\/\/([\w]||[-_.])+\.[a-z]{2,4}(\/||[\w-_])*\.(png|jpe?g||gif)$/).required(),
   password: joi.string().min(8).required(),
 });
+
+exports.loginSchema = joi.object().keys({
+  email: joi.string().email({ minDomainAtoms: 2 }).required(),
+  password: joi.string().required(),
+});
