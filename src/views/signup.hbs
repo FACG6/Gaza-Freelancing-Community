@@ -27,7 +27,8 @@
    <form id="contacts-info">
       <div>
          <label> Category : </label>
-         <select id="category-fields">
+         <select id="category-fields" onchange="OnSelectionChange()">
+            <option>Select One </option>
             {{#each categories}}
             <option value="{{this.id}}"> {{this.name}}</option>
             {{/each}}
@@ -36,9 +37,7 @@
       <div>
          <label> Specialization : </label>
          <select id="specialization-fields">
-            {{#each specs}} 
-            <option value="{{this.id}}"> {{this.name}}</option>
-            {{/each}}
+            <option>Select One </option>
          </select>
       </div>
       <div>
