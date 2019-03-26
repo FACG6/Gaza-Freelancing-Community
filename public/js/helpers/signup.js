@@ -43,3 +43,4 @@ const validationRegex = {
   thirdStepValidationRegex: [
     /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{8,})/],
 };
+module.exports = validationRegex;
