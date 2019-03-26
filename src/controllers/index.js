@@ -14,7 +14,7 @@ router.route('/signup')
   .get(signup.get)
   .post(signup.post);
 
-  router.get('/proposal/:id', proposal.get);
+router.get('/proposal/:id', proposal.get);
 router.get('/logout', logout);
 
 
