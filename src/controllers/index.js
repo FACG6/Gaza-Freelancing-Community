@@ -8,8 +8,8 @@ const authorizatin = require('../middlewares/authorization');
 
 const router = express.Router();
 
-router.use(authorizatin);
 router.get('/login', login.get);
+router.use(authorizatin);
 router.post('/specialize', specialize);
 router.route('/signup')
   .get(signup.get)
