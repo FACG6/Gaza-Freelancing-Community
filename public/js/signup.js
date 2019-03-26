@@ -9,7 +9,6 @@ const userInfo = {};
 secondStepDiv.style.display = 'none';
 thirdStepDiv.style.display = 'none';
 
-
 function OnSelectionChange() {
   const selectedGategory = fieldsdroplst.options[fieldsdroplst.selectedIndex];
   specializationsdroplst.textContent = '';
@@ -34,7 +33,6 @@ function OnSelectionChange() {
     });
 }
 
-
 getElement('user-info-next-btn').addEventListener('click', (e) => {
   e.preventDefault();
   userInfo.firstSection = {
@@ -52,7 +50,6 @@ getElement('user-info-next-btn').addEventListener('click', (e) => {
 getElement('to-confirm-info').addEventListener('click', (e) => {
   e.preventDefault();
   userInfo.secondSection = {
-    // field: fieldsdroplst.options[fieldsdroplst.selectedIndex].value,
     specalization_id: specializationsdroplst.options[specializationsdroplst.selectedIndex].value,
     freelancer_url: getElement('user-url', 'val'),
     photo_url: getElement('user-photo', 'val'),
