@@ -6,8 +6,8 @@ const login = require('./login');
 const error = require('./error');
 
 const router = express.Router();
-const { verify } = require('./middlewares/jwtVerification');
-const { createCookie } = require('./middlewares/createCookie');
+const { verify } = require('../middlewares/jwtVerification');
+const { createCookie } = require('../middlewares/createCookie');
 
 router.use(verify);
 router.get('/', (req, res) => {
