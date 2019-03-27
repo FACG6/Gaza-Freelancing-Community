@@ -24,6 +24,16 @@ const getSpecalize = (categoryId) => {
   };
   return connect.query(sql);
 };
+const getPropsalsbyValue = (specid, serchvalue) => {
+  const sql = {
+    text: 'select proposal.id, proposal.title, proposal.description,'
+    + ' users.firstname, users.lastname, users.photo_url '
+    + ' from proposal inner join users  on proposal.user_id = users.id'
+    + ` where proposal.specalization_id = $1 and lower(proposal.description) like '%${serchvalue}%' or lower(proposal.title) like '%${serchvalue}%'`,
+    values: [specid],
+  };
+  return connect.query(sql);
+};
 module.exports = {
-  checkMobile, checkEmail, getCategories, getSpecalize,
+  checkMobile, checkEmail, getCategories, getSpecalize, getPropsalsbyValue,
 };
