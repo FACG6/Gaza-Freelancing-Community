@@ -40,7 +40,7 @@ tape('test getPropsalsbyValue for \' valid value to title\'', (t) => {
       t.error(errr);
       t.end();
     });
-}); 
+});
 
 tape('test getPropsalsbyValue for \'invalid value for title and description\'', (t) => {
   reBuildDB()
