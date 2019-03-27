@@ -502,7 +502,7 @@ tape('test search \'get\' route ', (t) => {
   reBuildDB().then(() => {
     supertest(router)
       .get('/search')
-      .send(userInfo)
+      .post(userInfo)
       .expect(200)
       .end((err, res) => {
         if (err) {
@@ -523,7 +523,7 @@ tape('test search \'get\' route For invalid value', (t) => {
   };
   reBuildDB().then(() => {
     supertest(router)
-      .get('/search')
+      .post('/search')
       .send(userInfo)
       .expect(200)
       .end((err, res) => {
