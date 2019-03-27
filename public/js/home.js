@@ -9,7 +9,6 @@ let j = 0;
 
 function append() {
   requirements.style.display = 'block';
-  console.log(6465453);
 }
 addMore.addEventListener('click', () => {
   j++;
@@ -18,7 +17,6 @@ addMore.addEventListener('click', () => {
   newSkill.setAttribute('placeholder', 'Enter a required skill.');
   newSkill.setAttribute('id', j);
   skills.appendChild(newSkill);
-  console.log(newSkill);
 });
 deletBtn.addEventListener('click', () => {
   if (j >= 1) {
@@ -42,13 +40,18 @@ post.addEventListener('click', () => {
     specialization: document.getElementById('specialization').value,
     skills: skillsArray,
   };
-  if (propsl.description.length >= 20) {
-    console.log(propsl);
+  if (propsl.description.split(' ').join('').length >= 30) {
     fetch('/create-post', {
       method: 'POST',
       credentials: 'same-origin',
       body: JSON.stringify(propsl),
       headers: { 'content-type': 'application/json' },
+    });
+  }else{
+    Swal.fire({
+      title: '<i>Sorry..</i>',
+      html: `Enter a description of minimum 30 characters`,
+      confirmButtonText: '<u>ok</u>',
     });
   }
 });
