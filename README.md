@@ -59,5 +59,5 @@ run ```npm test``` in your terminal.
    * Anies Al-rayyes
    * Ahmed Al-Alami
    * Angham Aabed
-   * Fatm Siam
+   * Fatma Siam
 
