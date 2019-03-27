@@ -3,7 +3,7 @@ const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 const { addUser } = require('../src/database/queries/addData');
-const { checkEmail } = require('./../src/database/queries/getData');
+const { checkEmail, getProposals } = require('./../src/database/queries/getData');
 
 tape('Test logout router', (t) => {
   supertest(router)
@@ -18,7 +18,7 @@ tape('Test logout router', (t) => {
         t.deepEqual(result.header['set-cookie'], ['jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'], 'should return type of body object');
         t.end();
       }
-    })
+    });
 });
 
 tape('Test checkEmail query function if there is email match with income email', (t) => {
@@ -309,7 +309,7 @@ tape('test add user for mobile number', (t) => {
     .then(() => addUser({
       firstname: 'Ahmed',
       lastname: 'Elalmi',
-      mobile_number: '12345',
+      mobile_number: '0599999599',
       email: 'ahmed@gmail.com',
       specalization_id: 1,
       freelancer_url: 'ww.ass.com',
@@ -317,7 +317,7 @@ tape('test add user for mobile number', (t) => {
       password: '$2a$10$JF.SolNeqe3.Lax3pBlWROdujZ/YVzCfzwDJj/JOKskNoIHSpwzsW',
     }))
     .then((res) => {
-      t.equal(res.rows[0].mobile_number, '12345', 'the mobile_number must be 1234512345');
+      t.equal(res.rows[0].mobile_number, '0599999599', 'the mobile_number must be 0599999599');
       t.end();
     })
     .catch((errr) => {
@@ -326,16 +326,29 @@ tape('test add user for mobile number', (t) => {
     });
 });
 
-tape('Test Home route ', (t) => {
-  supertest(router)
-    .get('/')
-    .expect(200)
-    .expect('content-type', /html/)
-    .end((error, res) => {
-      if (error) {
-        t.error(error);
-      }
-      t.equal(typeof res.body, 'object', 'should return type of body object');
+
+tape('Test getProposal Query', (t) => {
+  reBuildDB()
+    .then(() => getProposals(1))
+    .then((res) => {
+      t.equal(res.rows[0].title, 'front-end develpoer', 'Should Return front-end develpoer');
+      t.end();
+    })
+    .catch((errr) => {
+      t.error(errr);
+      t.end();
+    });
+});
+
+tape('Test getProposal Query', (t) => {
+  reBuildDB()
+    .then(() => getProposals(30))
+    .then((res) => {
+      t.equal(res.rows[0], undefined, 'Should Return undefined');
+      t.end();
+    })
+    .catch((errr) => {
+      t.error(errr);
       t.end();
     });
 });
