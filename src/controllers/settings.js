@@ -1,20 +1,19 @@
-const getUser = require('../database/queries/getData');
+const { getUser } = require('../database/queries/getData');
 
 exports.get = (request, response) => {
   if (request.auth) {
-    const userId = request.auth.id;
-    getUser.getUser(userId)
+    getUser(request.auth.id)
       .then((result) => {
-        response.render('settings', {
-          js: ['helpers/collectData', 'settings'],
-          userInfo: result.rows[0],
-          css: ['settings'],
-          layout: 'main',
-          title: 'settings',
-        });
+        if (result.rows[0]) {
+          response.render('settings', {
+            js: ['helpers/collectData', 'settings'],
+            userInfo: result.rows[0],
+            css: ['settings'],
+            layout: 'main',
+            title: 'settings',
+          });
+        }
       })
-      .catch((err) => {
-        response.status(400).send({ Error: 'Bad Request' });
-      });
+      .catch(() => { response.status(400).send({ Error: 'Bad Request' }); });
   }
 };
