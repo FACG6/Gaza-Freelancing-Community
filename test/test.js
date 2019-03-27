@@ -2,8 +2,14 @@ const tape = require('tape');
 const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
-const { addUser } = require('../src/database/queries/addData');
-const { checkEmail, getProposals, getProposal } = require('./../src/database/queries/getData');
+const {
+  addUser,
+} = require('../src/database/queries/addData');
+const {
+  checkEmail,
+  getProposals,
+  getProposal,
+} = require('./../src/database/queries/getData');
 
 tape('Test logout router', (t) => {
   supertest(router)
@@ -119,7 +125,9 @@ tape('test signup \'POST\' route ', (t) => {
       freelancer_url: 'https://github.com/fatma',
       photo_url: 'https://www.iconspng.com/image/36709/face-avatar-man-male-handsome-3.jpg',
     },
-    thirdSection: { password: 'Aa123%fgfg' },
+    thirdSection: {
+      password: 'Aa123%fgfg',
+    },
   };
   reBuildDB().then(() => {
     supertest(router)
@@ -353,6 +361,7 @@ tape('Test getProposal Query', (t) => {
     });
 });
 
+
 tape('Test Proposal route', (t) => {
   supertest(router)
     .get('/proposal/1')
@@ -412,7 +421,10 @@ tape('Test getProposal query', (t) => {
 
 
 tape('testing Login Post Route For valid user ', (t) => {
-  const userInfo = { email: 'f.siam@gmail.com', password: 'Asdf1234' };
+  const userInfo = {
+    email: 'f.siam@gmail.com',
+    password: 'Asdf1234',
+  };
   reBuildDB().then(() => {
     supertest(router)
       .post('/login')
@@ -423,6 +435,7 @@ tape('testing Login Post Route For valid user ', (t) => {
           t.error(err);
           t.end();
         }
+        t.equal(typeof res.body, 'object', ' Return typeof object ');
         t.equal(JSON.parse(res.text).success, 'Login Success', ' Return Success Message');
         t.end();
       });
@@ -433,7 +446,10 @@ tape('testing Login Post Route For valid user ', (t) => {
 });
 
 tape('testing Login Post Route For Invalid Eamil ', (t) => {
-  const userInfo = { email: 'ff.siam@gmail.com', password: 'Asdf1234' };
+  const userInfo = {
+    email: 'ff.siam@gmail.com',
+    password: 'Asdf1234',
+  };
   reBuildDB().then(() => {
     supertest(router)
       .post('/login')
@@ -455,7 +471,10 @@ tape('testing Login Post Route For Invalid Eamil ', (t) => {
 
 
 tape('testing Login Post Route For Error Password ', (t) => {
-  const userInfo = { email: 'f.siam@gmail.com', password: 'Asdf123412' };
+  const userInfo = {
+    email: 'f.siam@gmail.com',
+    password: 'Asdf123412',
+  };
   reBuildDB().then(() => {
     supertest(router)
       .post('/login')
@@ -466,6 +485,7 @@ tape('testing Login Post Route For Error Password ', (t) => {
           t.error(err);
           t.end();
         }
+        t.equal(JSON.parse(res.text).Error, 'No result', ' Return Error messeage');
         t.equal(JSON.parse(res.text).error, 'Check Password', ' Return Error messeage');
         t.end();
       });
@@ -475,6 +495,50 @@ tape('testing Login Post Route For Error Password ', (t) => {
   });
 });
 
+tape('test search \'get\' route ', (t) => {
+  const userInfo = {
+    inputvalue: 'front',
+  };
+  reBuildDB().then(() => {
+    supertest(router)
+      .get('/search')
+      .post(userInfo)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          t.error(err);
+          t.end();
+        }
+        t.equal(JSON.parse(res.text).title, 'front-end', ' Return Error messeage');
+        t.end();
+      });
+  }).catch((err) => {
+    t.error(err);
+    t.end();
+  });
+});
+tape('test search \'get\' route For invalid value', (t) => {
+  const userInfo = {
+    inputvalue: 'Enter',
+  };
+  reBuildDB().then(() => {
+    supertest(router)
+      .post('/search')
+      .send(userInfo)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          t.error(err);
+          t.end();
+        }
+        t.equal(JSON.parse(res.text).Error, 'No result', ' Return Error messeage');
+        t.end();
+      });
+  }).catch((err) => {
+    t.error(err);
+    t.end();
+  });
+});
 
 tape.onFinish(() => {
   process.exit(0);
