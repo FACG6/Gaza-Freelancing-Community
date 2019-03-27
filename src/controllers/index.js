@@ -3,16 +3,18 @@ const logout = require('./logout');
 const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
+const proposal = require('./proposal');
 const error = require('./error');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
+const { search } = require('./search');
 const auth = require('../middlewares/authentication');
 
 const router = express.Router();
 
-router.post('/specialize', specialize);
 
 router.use(auth);
+router.post('/specialize', specialize);
 
 router.route('/login')
   .get(permission, login.get)
@@ -22,7 +24,11 @@ router.route('/signup')
   .get(permission, signup.get)
   .post(signup.post);
 
+
 router.use(authorization);
+router.post('/search', search);
+
+router.get('/proposal/:id', proposal.get);
 router.get('/', home.get);
 router.get('/logout', logout);
 router.get('/', home.get);
