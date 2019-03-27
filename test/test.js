@@ -3,7 +3,7 @@ const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 const { addUser } = require('../src/database/queries/addData');
-const { checkEmail } = require('./../src/database/queries/getData');
+const { checkEmail, getProposal } = require('./../src/database/queries/getData');
 
 tape('Test logout router', (t) => {
   supertest(router)
@@ -322,6 +322,63 @@ tape('test add user for mobile number', (t) => {
     })
     .catch((errr) => {
       t.error(errr);
+      t.end();
+    });
+});
+
+tape('Test Proposal route', (t) => {
+  supertest(router)
+    .get('/proposal/1')
+    .expect(200)
+    .expect('content-type', /html/)
+    .end((error, result) => {
+      if (error) {
+        t.error(error);
+        t.end();
+      }
+      t.equal(typeof result.body, 'object', 'Should return type of body object');
+      t.end();
+    });
+});
+
+tape('Test Proposal route', (t) => {
+  supertest(router)
+    .get('/propposal/1')
+    .expect(404)
+    .expect('content-type', /html/)
+    .end((err, result) => {
+      if (err) {
+        t.error(err);
+        t.end();
+      } else {
+        t.equal(typeof result.body, 'object', 'Should return Page Not Found');
+        t.end();
+      }
+    });
+});
+
+tape('Test getProposal query', (t) => {
+  const proposal = {
+    firstname: 'fatma',
+    specalization_id: 1,
+    lastname: 'siam',
+    email: 'f.siam@gmail.com',
+    freelancer_url: 'https://mm.mm.mmmmm',
+    photo_url: 'https://mm.mm.mmmmm',
+    mobile_number: '0599999999',
+    name: 'web develpoer',
+    title: 'front-end develpoer',
+    description: 'we need a front-end developer to working at project',
+    contact_me: 'f.siam@gmail.com',
+  };
+  reBuildDB()
+    .then(() => getProposal(1))
+    .then((result) => {
+      t.deepEqual(result.rows[0], proposal, 'the first row should be not empty');
+      t.end();
+    })
+    .catch((error) => {
+      t.error(error);
       t.end();
     });
 });
