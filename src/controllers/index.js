@@ -6,10 +6,13 @@ const login = require('./login');
 const error = require('./error');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
+const auth = require('../middlewares/authentication');
 
 const router = express.Router();
 
 router.post('/specialize', specialize);
+
+router.use(auth);
 
 router.route('/login')
   .get(permission, login.get)
