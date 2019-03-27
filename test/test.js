@@ -18,7 +18,7 @@ tape('Test logout router', (t) => {
         t.deepEqual(result.header['set-cookie'], ['jwt=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'], 'should return type of body object');
         t.end();
       }
-    })
+    });
 });
 
 tape('Test checkEmail query function if there is email match with income email', (t) => {
@@ -325,6 +325,49 @@ tape('test add user for mobile number', (t) => {
       t.end();
     });
 });
+
+tape('test search \'get\' route ', (t) => {
+  const userInfo = { inputvalue: 'front' };
+  reBuildDB().then(() => {
+    supertest(router)
+      .get('/search')
+      .send(userInfo)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          t.error(err);
+          t.end();
+        }
+        t.equal(typeof res.body, 'object', ' Return typeof object ');
+        t.end();
+      });
+  }).catch((err) => {
+    t.error(err);
+    t.end();
+  });
+});
+
+tape('test search \'get\' route For invalid value', (t) => {
+  const userInfo = { inputvalue: 'Enter' };
+  reBuildDB().then(() => {
+    supertest(router)
+      .get('/search')
+      .send(userInfo)
+      .expect(200)
+      .end((err, res) => {
+        if (err) {
+          t.error(err);
+          t.end();
+        }
+        t.equal(JSON.parse(res.text).Error, 'No result', ' Return Error messeage');
+        t.end();
+      });
+  }).catch((err) => {
+    t.error(err);
+    t.end();
+  });
+});
+
 
 tape.onFinish(() => {
   process.exit(0);
