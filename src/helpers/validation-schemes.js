@@ -17,5 +17,5 @@ exports.signUpSchema = joi.object().keys({
 
 exports.loginSchema = joi.object().keys({
   email: joi.string().email({ minDomainAtoms: 2 }).required(),
-  password: joi.string().alphanum().min(8).required(),
+  password: joi.string().min(8).required(),
 });
