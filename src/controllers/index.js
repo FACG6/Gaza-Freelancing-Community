@@ -5,16 +5,21 @@ const specialize = require('./specialization');
 const login = require('./login');
 const proposal = require('./proposal');
 const error = require('./error');
+const { authorization, permission } = require('../middlewares/authorization');
 
 const router = express.Router();
 
-router.get('/login', login.get);
 router.post('/specialize', specialize);
+
 router.route('/signup')
-  .get(signup.get)
+  .get(permission, signup.get)
   .post(signup.post);
 
 router.get('/proposal/:id', proposal.get);
+router.route('/login')
+  .get(permission, login.get);
+
+router.use(authorization);
 router.get('/logout', logout);
 
 
