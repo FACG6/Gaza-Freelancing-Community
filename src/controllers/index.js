@@ -5,6 +5,7 @@ const specialize = require('./specialization');
 const login = require('./login');
 const error = require('./error');
 const { authorization, permission } = require('../middlewares/authorization');
+const { search } = require('./search');
 
 const router = express.Router();
 
@@ -18,6 +19,8 @@ router.route('/login')
   .get(permission, login.get);
 
 router.use(authorization);
+router.get('/search', search);
+
 router.get('/logout', logout);
 
 router.use(error.notfound);
