@@ -3,6 +3,7 @@ const logout = require('./logout');
 const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
+const settings = require('./settings');
 const proposal = require('./proposal');
 const error = require('./error');
 const home = require('./home');
@@ -26,6 +27,7 @@ router.route('/signup')
 
 
 router.use(authorization);
+router.get('/settings', settings.get);
 router.post('/search', search);
 
 router.get('/proposal/:id', proposal.get);
