@@ -5,7 +5,6 @@ exports.get = (request, response) => {
     const userId = request.auth.id;
     getUser.getUser(userId)
       .then((result) => {
-        // console.log(result.rows[0]);
         response.render('settings', {
           js: ['helpers/collectData', 'settings'],
           userInfo: result.rows[0],
