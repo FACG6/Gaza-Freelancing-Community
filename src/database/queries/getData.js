@@ -28,10 +28,10 @@ const getSpecalize = (categoryId) => {
 };
 
 const getProposals = (specId) => {
-  const sql = 'select proposal.title, proposal.description, '
-  + 'proposal.id, users.firstname, users.lastname, '
-  + 'users.photo_url from proposal inner join users '
-  + 'on proposal.user_id = users.id where proposal.specalization_id = $1';
+  const sql = 'select proposal.id, proposal.title, proposal.description,'
+  + ' users.firstname, users.lastname, users.photo_url '
+  + ' from proposal inner join users  on proposal.user_id = users.id'
+  + ' where proposal.specalization_id = $1';
   const values = [specId];
   return connect.query(sql, values);
 };
