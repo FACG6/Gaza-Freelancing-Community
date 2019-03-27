@@ -10,12 +10,14 @@ const router = express.Router();
 
 router.post('/specialize', specialize);
 
+router.route('/login')
+  .get(permission, login.get)
+  .post(login.post);
+
 router.route('/signup')
   .get(permission, signup.get)
   .post(signup.post);
 
-router.route('/login')
-  .get(permission, login.get);
 
 router.use(authorization);
 router.get('/logout', logout);
