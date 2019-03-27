@@ -1,23 +1,24 @@
 const express = require('express');
-const auth = require('../middlewares/authentication');
 const logout = require('./logout');
 const signup = require('./signup');
 const specialize = require('./specialization');
 const login = require('./login');
 const error = require('./error');
+const { authorization, permission } = require('../middlewares/authorization');
 
 const router = express.Router();
 
-router.use(auth);
-
-router.route('/login')
-  .get(login.get)
-  .post(login.post);
 router.post('/specialize', specialize);
+
 router.route('/signup')
-  .get(signup.get)
+  .get(permission, signup.get)
   .post(signup.post);
 
+router.route('/login')
+  .get(permission, login.get)
+  .post(login.post);
+
+router.use(authorization);
 router.get('/logout', logout);
 
 router.use(error.notfound);
