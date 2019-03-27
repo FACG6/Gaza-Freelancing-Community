@@ -1,71 +1,66 @@
-<div>
-   <h1>Sign Up</h1>
-   <form id="user-info">
-      <div>
-         <label for="firstname">First Name :
-            <input id="firstname" type="text" placeholder="Enter Your First Name" required>
-         </label>
-      </div>
-      <div>
-         <label for="lastname">Last Name :
-            <input id="lastname" type="text" name='lastname' placeholder="Enter Your Last Name" required>
-         </label>
-      </div>
-      <div>
-         <label for="mobile"> Mobile NO. :
+<div class="left">
+   <div class="section-signup">
+      <h1 class="signup-title">Sign Up</h1>
+      <form id="user-info" class="step-one">
+         <div class="firstname-div">
+            <label for="firstname">First Name :</label>
+            <input id="firstname" type="text" placeholder="Your First Name" required>
+         </div>
+         <div class="lastname-div">
+            <label for="lastname">Last Name :</label>
+            <input id="lastname" type="text" name='lastname' placeholder="Your Last Name" required>
+         </div>
+         <div class="mobile-div">
+            <label for="mobile"> Mobile NO. :</label>
             <input type="text" name='mobile' id="mobile" placeholder="Enter Your Mobile Number" required>
-         </label>
-      </div>
-      <div>
-         <label for="email">E-mail :
+         </div>
+         <div>
+            <label for="email">E-mail :</label>
             <input type="email" name='email' id="email" placeholder="example@hotmail.com" required>
-         </label>
-      </div>
-      <input type="submit" value="Next" id="user-info-next-btn">
-      <p> You already have an account ? <a href="/login">Sign In</a> </p>
-   </form>
-   <form id="contacts-info">
-      <div>
-         <label> Category : </label>
-         <select id="category-fields" onchange="OnSelectionChange()">
+         </div>
+         <input type="submit" value="console" id="console">
+         <input type="submit" value="Next" id="user-info-next-btn">
+         <p> You already have an account ? <a href="/login">Sign In</a> </p>
+      </form>
+      <form id="contacts-info" class="step-tow">
+         <div class="category">
+            <label> Category : </label>
+            <select id="category-fields" onchange="OnSelectionChange()">
             <option>Select One </option>
             {{#each categories}}
             <option value="{{this.id}}"> {{this.name}}</option>
             {{/each}}
          </select>
-      </div>
-      <div>
-         <label> Specialization : </label>
-         <select id="specialization-fields">
-            <option>Select One </option>
+         </div>
+         <div class="specialization">
+            <label> Specialization : </label>
+            <select id="specialization-fields">
+            <option>Select One</option>
          </select>
-      </div>
-      <div>
-         <label for="user-url">LinkedIn, GitHub, etc. profile URL :
+         </div>
+         <div>
+            <label for="user-url">LinkedIn, GitHub, etc. profile URL :</label>
             <input id="user-url" type="text" name='user-url' placeholder="Example: https://github.com/Someone" required>
-         </label>
-      </div>
-      <div>
-         <label for="user-photo">Photo URL :
+         </div>
+         <div>
+            <label for="user-photo">Photo URL :</label>
             <input id="user-photo" type="text" name='user-photo' placeholder="Enter Your Photo Url" required>
-         </label>
-      </div>
-      <input type="submit" value="Back" id="to-user-info">
-      <input type="submit" value="Next" id="to-confirm-info">
-   </form>
-   <form id="confirm-info">
-      <div>
-         <label for="password">Password
+         </div>
+         <input type="submit" value="Back" id="to-user-info">
+         <input type="submit" value="Next" id="to-confirm-info">
+      </form>
+      <form id="confirm-info" class="step-three">
+         <div>
+            <label for="password">Password :</label>
             <input id="password" type="password" name='pass' placeholder="Enter Your Password" required>
-         </label>
-      </div>
-      <div>
-         <label for="confirm-pass">Confirm Your Password
+         </div>
+         <div>
+            <label for="confirm-pass">Confirm Your Password :</label>
             <input type="password" name='confirm-pass' id="confirm-pass" placeholder="Confirm Your Password" required>
-         </label>
-      </div>
-      <input type="submit" value="Back" id="to-contacts-info">
-      <input type="submit" value="Sign Up" id="signup-btn">
-   </form>
-</div>
+         </div>
+         <input type="submit" value="Back" id="to-contacts-info">
+         <input type="submit" value="Sign Up" id="signup-btn">
+      </form>
+
+   </div>
 </div>
