@@ -9,5 +9,7 @@ exports.get = (req, res) => {
       css: ['home'],
       title: 'home',
     });
-  });
+  }).catch(()=>{
+    res.status(500).send({Error:'Internal Server Erro'});
+  })
 };
