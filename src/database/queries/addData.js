@@ -1,6 +1,5 @@
 const connection = require('../config/db_connection');
 
-
 const addUser = (userInfo) => {
   const queryValues = Object.keys(userInfo).map(info => userInfo[info]);
   const queryObj = {
