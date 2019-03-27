@@ -7,6 +7,7 @@ const proposal = require('./proposal');
 const error = require('./error');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
+const { search } = require('./search');
 const auth = require('../middlewares/authentication');
 
 const router = express.Router();
@@ -25,6 +26,8 @@ router.route('/signup')
 
 
 router.use(authorization);
+router.post('/search', search);
+
 router.get('/proposal/:id', proposal.get);
 router.get('/', home.get);
 router.get('/logout', logout);
