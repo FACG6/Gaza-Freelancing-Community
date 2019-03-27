@@ -339,7 +339,7 @@ tape('testing Login Post Route For valid user ', (t) => {
           t.error(err);
           t.end();
         }
-        t.equal(JSON.parse(res.text).success, 'Login Success', ' Return Error messeage');
+        t.equal(JSON.parse(res.text).success, 'Login Success', ' Return Success Msg');
         t.end();
       });
   }).catch((err) => {
