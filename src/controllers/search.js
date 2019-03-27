@@ -6,12 +6,7 @@ exports.search = (req, res) => {
   getPropsalsbyValue(specId, inputvalue)
     .then(({ rows: proposal }) => {
       if (proposal[0]) {
-        res.render('/', {
-          title: 'Home',
-          js: ['search'],
-          css: ['home'],
-          proposal,
-        });
+        res.status(200).send({ success: 'The result ', result: proposal });
       } else {
         res.status(400).send({ Error: 'No result' });
       }
