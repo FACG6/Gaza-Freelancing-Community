@@ -46,7 +46,7 @@ INSERT INTO field (name)
 values ('Developer');
 
 INSERT INTO specialization (name,field_id) 
-values ('web develpoer',1);
+values ('Back-End develpoer',1),('Front-End',1);
 
 INSERT INTO users (firstname,lastname,email,freelancer_url,photo_url,mobile_number,specalization_id,password)
 values('fatma','siam','f.siam@gmail.com','https://mm.mm.mmmmm','https://mm.mm.mmmmm','0599999999',1,'$2a$10$uxUvu/EwQrof1UxVMz1W/OtWLs3LXlBTy.1ukhz1zy72xyHgqGiva');
