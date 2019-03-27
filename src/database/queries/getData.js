@@ -27,6 +27,17 @@ const getSpecalize = (categoryId) => {
   return connect.query(sql);
 };
 
+const getPropsalsbyValue = (specid, searchvalue) => {
+  const sql = {
+    text: 'select prop.id, prop.title, prop.description,'
+    + ' users.firstname, users.lastname, users.photo_url '
+    + ' from proposal prop  join users  on prop.user_id = users.id'
+    + 'where prop.specalization_id = $1 and (lower(prop.description) like $2 or lower(prop.title) like $2)',
+    values: [specid, `%${searchvalue}%`],
+  };
+  return connect.query(sql);
+};
+
 const getProposals = (specId) => {
   const sql = 'select proposal.id, proposal.title, proposal.description,'
   + ' users.firstname, users.lastname, users.photo_url '
@@ -50,5 +61,12 @@ const getRequirement = (proposalId) => {
 
 
 module.exports = {
-  checkMobile, checkEmail, getCategories, getSpecalize, getProposal, getRequirement, getProposals,
+  checkMobile,
+  checkEmail,
+  getCategories,
+  getSpecalize,
+  getProposal,
+  getRequirement,
+  getProposals,
+  getPropsalsbyValue,
 };
