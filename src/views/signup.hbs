@@ -25,19 +25,18 @@
       <form id="contacts-info" class="step-tow">
          <div class="category">
             <label> Category : </label>
-            <select id="category-fields">
-               {{#each categories}}
-               <option value="{{this.id}}"> {{this.name}}</option>
-               {{/each}}
-            </select>
+            <select id="category-fields" onchange="OnSelectionChange()">
+            <option>Select One </option>
+            {{#each categories}}
+            <option value="{{this.id}}"> {{this.name}}</option>
+            {{/each}}
+         </select>
          </div>
          <div class="specialization">
             <label> Specialization : </label>
             <select id="specialization-fields">
-               {{#each specs}}
-               <option value="{{this.id}}"> {{this.name}}</option>
-               {{/each}}
-            </select>
+            <option>Select One</option>
+         </select>
          </div>
          <div>
             <label for="user-url">LinkedIn, GitHub, etc. profile URL :</label>

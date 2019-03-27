@@ -30,10 +30,6 @@ body{
   box-sizing: border-box;
 }
 
-.step-one,
-.step-three {
-  display: none;
-}
  label {
   margin: 0;
   padding: 0;
