@@ -1,13 +1,12 @@
 <form id="loginForm" class="loginForm">
-  <h1>Login</h1>
-  <div>
-    <label for="email">Email</label>
+  <div class="login"><i class="fas fa-user"></i></div>
+  <div class="form">
+    <label for="email">Email :</label>
     <input id="email" type="email" name="email" placeholder="Enter your email" required>
-  </div>
-  <div>
-    <label for="password">password</label>
+    <label for="password">password :</label>
     <input id="password" type="password" name="password" placeholder="Enter your password" required>
+    <div id="msg"></div>
+    <button class="btn_login" id="btn_login">Login</button>
+    <p>Don’t have a account ? <a href="/signup">Sign Up</a></p>
   </div>
-  <div id="msg"></div>
-  <button id="btn_login">Login</button>
 </form>
