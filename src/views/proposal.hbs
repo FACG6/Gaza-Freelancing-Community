@@ -1,25 +1,26 @@
 <div class="proposal" style="width:100%; text-align:center; box-sizing:border-box">
     <div class="user-info">
         <div class="left-user-info">
-            <img src="{{proposal.photo_url}}" alt="user image">
+            <img src="{{prop.photo_url}}" alt="user image">
         </div>
         <div class="right-user-info">
-            <h2 class="username"> {{ proposal.firstname}} {{ proposal.lastname}} </h2>
-            <h2 class="specalization-name"> {{ proposal.name}} </h2>
+            <h2 class="username"> {{ prop.firstname}} {{ prop.lastname}} </h2>
+            <h2 class="specalization-name"> {{ prop.name}} </h2>
         </div>
     </div>
 
     <div class="description">
-        <h2 class="proposal-title"> {{proposal.title}} </h2>
-        <p class="proposal-description"> {{proposal.description}} </p>
+        <h2 class="proposal-title"> {{prop.title}} </h2>
+        <p class="proposal-description"> {{prop.description}} </p>
     </div>
-
+    {{#each requirment}}
     <div class="requierments">
-            <p> {{proposal.text}} </p>
+            <p> {{this.text}} </p>
     </div>
+    {{/each}}
 
     <div class="contact-info">
-        <span> {{proposal.contact_me}} </span>
-        <span> {{proposal.mobile_number}} </span>
+        <span> {{prop.contact_me}} </span>
+        <span> {{prop.mobile_number}} </span>
     </div>
 </div>

@@ -1,11 +1,5 @@
 const connect = require('./../config/db_connection');
 
-const getProposal = (specId) => {
-  const sql = 'SELECT users.firstname, users.specalization_id, users.lastname, users.email, users.freelancer_url, users.photo_url, users.mobile_number, specialization.name, proposal.title,proposal.description, proposal.contact_me, requirement.text from (users join specialization  on users.specalization_id = specialization.id) join (proposal join requirement on requirement.prop_id = proposal.id) on proposal.user_id = users.id where users.specalization_id = $1';
-  const values = [specId];
-  return connect.query(sql, values);
-};
-
 const checkMobile = (mobile) => {
   const query = {
     text: 'select * from users where  mobile_number = $1',
@@ -30,6 +24,18 @@ const getSpecalize = (categoryId) => {
   };
   return connect.query(sql);
 };
+
+const getProposal = (id) => {
+  const sql = 'SELECT users.firstname, users.specalization_id, users.lastname, users.email, users.freelancer_url, users.photo_url, users.mobile_number, specialization.name, proposal.title,proposal.description, proposal.contact_me, requirement.prop_id from (users join specialization  on users.specalization_id = specialization.id) join (proposal  join requirement on requirement.prop_id = proposal.id) on proposal.user_id = users.id where proposal.id = $1';
+  const values = [id];
+  return connect.query(sql, values);
+};
+const getRequirement = (proposalId) => {
+  const sql = 'select * from requirement where prop_id = $1';
+  const value = [proposalId];
+  return connect.query(sql, value);
+};
+
 module.exports = {
-  checkMobile, checkEmail, getCategories, getSpecalize, getProposal,
+  checkMobile, checkEmail, getCategories, getSpecalize, getProposal, getRequirement,
 };
