@@ -81,3 +81,27 @@ a:hover {
   transition: color .3s;
   text-decoration: underline;
 }
+
+.rigth{
+  color: red;
+  background: #0F9CAF;
+  width: 50%;
+  height: 100vh;
+  transform: translateX(-200px) rotate(45deg);
+  border-radius: 5px;
+  
+}
+.rigth .logo{
+  width: 260px;
+  height: 260px;
+  transform: translate(160px, 30px) rotate(-45deg);
+}
+.rigth .logo img{
+  width: 100%;
+}
+
+.rigth .about{
+  transform: translate(250px, -120px) rotate(-45deg);
+  font-size: 20px;
+  color: #f1eeee;
+}
