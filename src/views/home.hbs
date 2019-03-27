@@ -1,11 +1,21 @@
-<div>
+<div id="proposal">
     <div>
         Create new post:
     </div>
-    <textarea placeholder="Write your proposal...">
-
-        <button><a href="#">post</a></button>
-    </textarea>
+    <textarea onfocus="append()" onblur="remove()" id="text-area" placeholder="Write your proposal..."></textarea>
+    <button id="post">Post</button>
+        <div id="requirements" style="display:none">
+        <ul id="spcialization">
+        <h4>specialization</h4>
+       <input id="specialization" type="text" placeholder="Enter required specialization.."></input>
+        </ul>
+        <ul id="skills">
+        <h4>Required skills:</h4>
+        <input type="text" placeholder="Enter a required skill.." id="0"></input>
+        </ul>
+         <button id="add-more">add more</button>
+         <button id="delete">delete</button>
+        </div>
 </div>
 <h3>Job Inquiries</h3>
 {{#each proposal}}

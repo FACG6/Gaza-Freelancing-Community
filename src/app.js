@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const { join } = require('path');
 const router = require('./controllers/index');
+const helpers = require('./views/helpers/index');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.engine('hbs', exphbs({
   layoutsDir: join(__dirname, 'views', 'layouts'),
   partialsDir: join(__dirname, 'views', 'partials'),
   defaultLayout: 'main',
+  helpers,
 }));
 app.use(express.static(join(__dirname, '..', 'public')));
 app.set('port', process.env.PORT || 3000);
