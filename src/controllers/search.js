@@ -7,6 +7,7 @@ exports.search = (req, res) => {
     .then(({ rows: proposal }) => {
       if (proposal[0]) {
         res.status(200).send({ success: 'The result ', result: proposal });
+        res.redirect('/', { proposals: proposal });
       } else {
         res.status(400).send({ Error: 'No result' });
       }
