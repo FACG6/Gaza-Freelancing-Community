@@ -1,4 +1,28 @@
-<div> 
-    Proposal Details
-</div>
+<div class="proposal">
+   <div class="user-info">
+       <div class="left-user-info">
+           <img src="{{prop.photo_url}}" alt="user image">
+       </div>
+       <div class="right-user-info">
+           <h2 class="username"> {{ prop.firstname}} {{ prop.lastname}} </h2>
+           <h2 class="specalization-name"> {{ prop.name}} </h2>
+       </div>
+   </div>
+   <div class="description">
+       <h2 class="proposal-title"> {{prop.title}} </h2>
+       <p class="proposal-description"> {{prop.description}} </p>
 
+       <p class="requierments-title">Requierments</p>
+       {{#each requirment}}
+       <div class="requierments">
+           <p>- {{this.text}} </p>
+       </div>
+       {{/each}}
+
+       <div class="contact-info">
+           <p class="contact">Contact me</p>
+           <span>Email : {{prop.contact_me}} </span><br>
+           <span>Mobile : {{prop.mobile_number}} </span>
+       </div>
+   </div>
+</div>
