@@ -25,11 +25,9 @@ exports.put = (request, response) => {
   } = { ...request.body };
   updateUser(request.auth.id, firstname, lastname, birthday, mobile, userPhoto, email, userUrl)
     .then((result) => {
-      console.log(result.rows, 111111111);
-      console.log(2222222222222);
+      console.log(result.rows);
     })
     .catch((err) => {
-      console.log(err);
       response.status(400).send({ Error: 'Bad Request' });
     });
 };
