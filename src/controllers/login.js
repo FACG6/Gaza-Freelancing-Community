@@ -22,8 +22,12 @@ exports.post = (request, response) => {
           bcrypt.compare(userInfo.password, user[0].password, (err, valid) => {
             if (err) throw new Error('Bad Request');
             if (valid) {
-              const { id, specalization_id, firstname, lastname, photo_url } = { ...user[0] };
-              const payload = { id, specalization_id, firstname, lastname, photo_url };
+              const {
+                id, specalization_id, firstname, lastname, photo_url, name,
+              } = { ...user[0] };
+              const payload = {
+                id, specalization_id, firstname, lastname, photo_url, name,
+              };
               const token = sign(payload, process.env.SECRET);
               response.cookie('jwt', token, { maxAge: 1000 * 60 * 60 * 24 * 1 }, { httpOnly: true });
               response.status(200).send({ success: 'Login Success' });
@@ -31,8 +35,8 @@ exports.post = (request, response) => {
           });
         } else response.status(400).send({ error: 'Check Email ' });
       })
-      .catch(() => {
-        response.status(400).send({ error: 'Bad Request' });
+      .catch((err) => {
+        response.status(400).send({ error: err });
       });
   } else {
     response.status(400).send({ error: 'Check Email Or Password' });

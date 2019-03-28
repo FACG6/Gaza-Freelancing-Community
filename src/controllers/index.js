@@ -10,7 +10,6 @@ const profile = require('./profile');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
 const { search } = require('./search');
-const profile = require('./profile');
 
 const auth = require('../middlewares/authentication');
 
@@ -37,7 +36,7 @@ router.get('/', home.get);
 router.get('/proposal/:id', proposal.get);
 router.route('/profile')
   .get(profile.get);
-  
+
 router.get('/logout', logout);
 
 router.use(error.notfound);
