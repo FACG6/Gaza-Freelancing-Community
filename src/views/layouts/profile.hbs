@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 {{> head}}
 
 <body>
-   {{{body}}}
-   {{> footer}}
-   {{> script}}
+   <div class="contaier">
+      <div class="sidebar">
+         {{> sidebar}}
+      </div>
+      <div class="main">
+         {{{body}}}
+      </div>
+      {{> script}}
+   </div>
 </body>
 
 </html>
