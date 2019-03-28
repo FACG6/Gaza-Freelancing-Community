@@ -4,7 +4,7 @@ const thirdStepDiv = getElement('confirm-info');
 const confirmedPassword = getElement('confirm-pass', 'val');
 const fieldsdroplst = document.getElementById("category-fields");
 const specializationsdroplst = document.getElementById("specialization-fields");
-
+const steptow = document.querySelector('.steptow');
 const userInfo = {};
 secondStepDiv.style.display = 'none';
 thirdStepDiv.style.display = 'none';
@@ -44,6 +44,7 @@ getElement('user-info-next-btn').addEventListener('click', (e) => {
   validate(userInfo.firstSection, validationRegex.firstStepValidationRegex, (trueOrFalse) => {
     if (trueOrFalse) {
       ToggleDisplay(firstStepDiv, secondStepDiv);
+      steptow.classList.add('active');
     }
   });
 });
