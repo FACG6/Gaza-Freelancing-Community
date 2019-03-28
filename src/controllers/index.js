@@ -33,8 +33,8 @@ router.get('/settings', settings.get);
 router.put('/settings', settings.put);
 router.post('/search', search);
 
-router.get('/proposal/:id', proposal.get);
 router.get('/', home.get);
+router.get('/proposal/:id', proposal.get);
 router.get('/logout', logout);
 router.route('/profile')
   .get(profile.get);
