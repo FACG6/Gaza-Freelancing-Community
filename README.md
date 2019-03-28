@@ -57,7 +57,7 @@ run ```npm test``` in your terminal.
  ### **Our Team** : 
   We are 3AF team 
    * Anies Al-rayyes
-   * Ahmed Al-Alami
+   * Ahmed Elalmi
    * Angham Aabed
-   * Fatm Siam
+   * Fatma Siam
 

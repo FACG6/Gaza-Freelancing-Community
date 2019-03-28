@@ -11,7 +11,10 @@
     "start": "NODE_ENV=production node src/index.js",
     "dev": "NODE_ENV=development nodemon src/index.js",
     "test::query": "NODE_ENV=test tape test/testingQuery.js | tap-spec"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5439ab19c390a0fceefeaa4e407398998d4b00cb
   },
   "repository": {
     "type": "git",

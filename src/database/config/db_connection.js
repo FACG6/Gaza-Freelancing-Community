@@ -22,6 +22,6 @@ const options = {
   ssl: params.hostname !== 'localhost',
   max: process.env.DB_MAX_CONNECTIONS || 2,
   // return an error after 9 second if connection could not be established
-  connectionTimeoutMillis: 9000,
+  // connectionTimeoutMillis: 9000,
 };
 module.exports = new Pool(options);

@@ -5,7 +5,7 @@ exports.get = (req, res) => {
     .then(({ rows: proposal }) => {
       res.render('profile', {
         layout: 'profile',
-        title: 'profile', // passing user name
+        title: 'profile', 
         css: ['profile'],
         proposal: proposal[0],
       });
