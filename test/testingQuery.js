@@ -7,6 +7,7 @@ const {
   getPropsalsbyValue,
 } = require('./../src/database/queries/getData');
 
+
 tape('test getCategories ', (t) => {
   reBuildDB()
     .then(() => getCategories())

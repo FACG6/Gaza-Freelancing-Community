@@ -32,8 +32,7 @@ CREATE TABLE proposal (
 	title varchar(50) NOT NULL,
 	description varchar NOT NULL,
 	user_id INT REFERENCES users(id),
-	specalization_id int REFERENCES specialization(id),
-	contact_me VARCHAR NOT NULL
+	specalization_id int REFERENCES specialization(id)
 );
 
 CREATE TABLE requirement (
@@ -51,8 +50,8 @@ values ('Front develpoer',1), ('Back-end',1);
 INSERT INTO users (firstname,lastname,email,freelancer_url,photo_url,mobile_number,specalization_id,password)
 values('fatma','siam','f.siam@gmail.com','https://mm.mm.mmmmm','https://mm.mm.mmmmm','0599999999',1,'$2a$10$5.WmgQhO5eYGiB48vkZJvum.J0HEAH3lToyGD8sdIUEjt8xRK2QOW');
 
-INSERT INTO proposal (title,description,user_id,specalization_id,contact_me)
-values ('front-end develpoer','we need a front-end developer to working at project',1,1,'f.siam@gmail.com');
+INSERT INTO proposal (title,description,user_id,specalization_id)
+values ('front-end develpoer','we need a front-end developer to working at project',1,1);
 
 INSERT INTO requirement(text,prop_id) 
 values ('full time' ,1), ('react',1);

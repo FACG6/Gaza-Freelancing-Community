@@ -3,7 +3,7 @@ const supertest = require('supertest');
 const router = require('../src/app');
 const reBuildDB = require('../src/database/config/db_build');
 const {
-  addUser,
+  addUser, addPost, addRequirment,
 } = require('../src/database/queries/addData');
 const {
   checkEmail,
@@ -540,6 +540,31 @@ tape('test search \'get\' route For invalid value', (t) => {
   });
 });
 
+
+tape('test post create', (t) => {
+  const prop = {
+    title: 'web',
+    decsription: 'desssc',
+    specaliza_id: 1,
+    requirments: ['111111', '22222'],
+  };
+  reBuildDB().then(() => {
+    supertest(router)
+      .post('/create-post')
+      .send(prop)
+      .end((err, res) => {
+        if (err) {
+          t.error(err);
+          t.end();
+        }
+        t.equal(typeof res.body, 'object', 'return object');
+        t.end();
+      });
+  }).catch((err) => {
+    t.error(err);
+    t.end();
+  });
+});
 tape.onFinish(() => {
   process.exit(0);
 });

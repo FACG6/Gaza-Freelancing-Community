@@ -10,7 +10,7 @@ const profile = require('./profile');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
 const { search } = require('./search');
-
+const { createPost } = require('./createProposal');
 const auth = require('../middlewares/authentication');
 
 const router = express.Router();
@@ -26,16 +26,19 @@ router.route('/login')
 router.route('/signup')
   .get(permission, signup.get)
   .post(signup.post);
-
+  
 router.use(authorization);
-router.get('/settings', settings.get);
-router.post('/search', search);
 
 router.get('/', home.get);
+router.post('/search', search);
+router.post('/create-post', createPost);
 
 router.get('/proposal/:id', proposal.get);
 router.route('/profile')
   .get(profile.get);
+
+router.get('/settings', settings.get);
+router.put('/settings', settings.put);
 
 router.get('/logout', logout);
 
