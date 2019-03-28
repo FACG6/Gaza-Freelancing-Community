@@ -1,6 +1,13 @@
 <div class="left">
    <div class="section-signup">
       <h1 class="signup-title">Sign Up</h1>
+      <div class="container">
+         <ul class="progressbar">
+            <li class="active stepone"></li>
+            <li class="steptow"></li>
+            <li class="stepthree"></li>
+         </ul>
+      </div>
       <form id="user-info" class="step-one">
          <div class="firstname-div">
             <label for="firstname">First Name :</label>
@@ -26,17 +33,17 @@
          <div class="category">
             <label> Category : </label>
             <select id="category-fields" onchange="OnSelectionChange()">
-            <option>Select One </option>
-            {{#each categories}}
-            <option value="{{this.id}}"> {{this.name}}</option>
-            {{/each}}
-         </select>
+               <option>Select One </option>
+               {{#each categories}}
+               <option value="{{this.id}}"> {{this.name}}</option>
+               {{/each}}
+            </select>
          </div>
          <div class="specialization">
             <label> Specialization : </label>
             <select id="specialization-fields">
-            <option>Select One</option>
-         </select>
+               <option>Select One</option>
+            </select>
          </div>
          <div>
             <label for="user-url">LinkedIn, GitHub, etc. profile URL :</label>

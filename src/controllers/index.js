@@ -26,7 +26,7 @@ router.route('/login')
 router.route('/signup')
   .get(permission, signup.get)
   .post(signup.post);
-
+  
 router.use(authorization);
 
 router.get('/', home.get);
