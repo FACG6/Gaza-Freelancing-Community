@@ -6,4 +6,4 @@ const updateUser = (id, firstname, lastname, birthday, mobile, userPhoto, email,
   return connect.query(sql, value);
 };
 
-module.exports = updateUser;
+module.exports = { updateUser };
