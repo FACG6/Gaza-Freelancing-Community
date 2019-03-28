@@ -4,7 +4,7 @@ exports.get = (request, response) => {
   const propId = request.url.split('/')[2];
   getProposal(propId)
     .then((result) => {
-      const proposalId = result.rows[0].prop_id;
+      const proposalId = result.rows[0].id;
       if (proposalId) {
         getRequirement(proposalId)
           .then((res) => {
@@ -19,7 +19,7 @@ exports.get = (request, response) => {
               requirment: propDesc.requirments,
               prop: propDesc.proposal,
               layout: 'main',
-              css: ['proposal'],
+              css: ['home', 'proposal'],
               title: 'Proposal',
             });
           });
