@@ -1,19 +1,19 @@
 <form class="settings">
-    <div class="user-info">
-        <div>
-            <label for="firstname">First Name :
+    <h2 class="title-userinfo">User Information</h2>
+
+    <div class="user-info row-one">
+        <div class="left">
+            <label for="firstname">First Name :</label>
                 <input id="firstname" type="text" value="{{userInfo.firstname}}" required>
-            </label>
         </div>
-        <div>
-            <label for="lastname">Last Name :
+        <div class="right">
+            <label for="lastname">Last Name :</label>
                 <input id="lastname" type="text" name='lastname' value="{{userInfo.lastname}}" required>
-            </label>
         </div>
     </div>
 
-    <div>
-        <div>
+    <div class="row-tow">
+        <div class="left">
             <label> City : </label>
             <select id="city-fields">
                 <option value="1"> Khanyounis </option>
@@ -22,15 +22,14 @@
                 <option value="4"> Dier-Al balah </option>
             </select>
         </div>
-        <div>
-            <label for="birthday">Birthday Date :
+        <div class="right">
+            <label for="birthday">Birthday Date :</label>
                 <input id="birthday" type="date" name='birthday' value="{{userInfo.birthday}}" required>
-            </label>
         </div>
     </div>
 
-    <div>
-        <div>
+    <div class="row-three">
+        <div class="left">
             <label> Field : </label>
             <select id="categories">
                 <option value="{{userInfo.field_id}}"> {{userInfo.category}}</option>
@@ -40,46 +39,38 @@
                 <option value="4"> Systems Analysis </option>
             </select>
         </div>
-        <div>
-            <label> Specialization : </label>
+        <div class="right">
+            <label> Specialization :</label>
             <select id="specialization-fields">
                 <option value="{{userInfo.specalization_id}}"> {{userInfo.specialization}} </option>
             </select>
         </div>
     </div>
 
-    <div class="contacts-info">
-        <div>
-            <label for="user-url"> Freelancer URL : 
-                <input id="user-url" type="text" name='user-url' value="{{userInfo.freelancer_url}}" required>
-            </label>
+    <div class="contacts-info row-four">
+        <div class="left">
+            <label for="userUrl"> Freelancer URL :</label>
+                <input id="userUrl" type="text" name='userUrl' value="{{userInfo.freelancer_url}}" required>
         </div>
-        <div>
-            <label for="email">E-mail : 
-                <input type="email" name='email' id="email" value="{{userInfo.email}}" required>
-            </label>
+        <div class="right">
+            <label for="email">E-mail :</label>
+                <input type="email" name='email' id="email" value="{{userInfo.email}}" required>    
         </div>
     </div>
 
-    <div>
-        <div>
-            <label for="user-photo">Photo URL : 
-                <input id="user-photo" type="text" name='user-photo' value="{{userInfo.photo_url}}" required>
-            </label>
+    <div class="row-five">
+        <div class="left">
+            <label for="userPhoto">Photo URL :</label>
+                <input id="userPhoto" type="text" name='user-photo' value="{{userInfo.photo_url}}" required>
         </div>
-        <div>
-            <label for="mobile"> Mobile NO. : 
+        <div class="right">
+            <label for="mobile"> Mobile NO. :</label>
                 <input type="text" name='mobile' id="mobile" value="{{userInfo.mobile_number}}" required>
-            </label>
         </div>
-      <div>
     </div>
 
-    <div>
-        <a href="/settings"  id="save-user-info"> Save </a>
-        <a href="/profile" id="to-profile"> Cancel </a>       
-    </div> 
+    <div class="btns">
+        <a href="/profile" id="to-profile"> Cancel </a>
+        <a href="/settings" id="save-user-info"> Save </a>
+    </div>
 </form>
-
-
-
