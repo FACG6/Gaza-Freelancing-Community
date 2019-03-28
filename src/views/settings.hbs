@@ -1,4 +1,85 @@
-<div>
-    from Settings
-</div>
+<form class="settings">
+    <div class="user-info">
+        <div>
+            <label for="firstname">First Name :
+                <input id="firstname" type="text" value="{{userInfo.firstname}}" required>
+            </label>
+        </div>
+        <div>
+            <label for="lastname">Last Name :
+                <input id="lastname" type="text" name='lastname' value="{{userInfo.lastname}}" required>
+            </label>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <label> City : </label>
+            <select id="city-fields">
+                <option value="1"> Khanyounis </option>
+                <option value="2"> Gaza </option>
+                <option value="3"> Rafah </option>
+                <option value="4"> Dier-Al balah </option>
+            </select>
+        </div>
+        <div>
+            <label for="birthday">Birthday Date :
+                <input id="birthday" type="date" name='birthday' value="{{userInfo.birthday}}" required>
+            </label>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <label> Field : </label>
+            <select id="categories">
+                <option value="{{userInfo.field_id}}"> {{userInfo.category}}</option>
+                <option value="1"> Web Development </option>
+                <option value="2"> UX/UI </option>
+                <option value="3"> Translation </option>
+                <option value="4"> Systems Analysis </option>
+            </select>
+        </div>
+        <div>
+            <label> Specialization : </label>
+            <select id="specialization-fields">
+                <option value="{{userInfo.specalization_id}}"> {{userInfo.specialization}} </option>
+            </select>
+        </div>
+    </div>
+
+    <div class="contacts-info">
+        <div>
+            <label for="user-url"> Freelancer URL : 
+                <input id="user-url" type="text" name='user-url' value="{{userInfo.freelancer_url}}" required>
+            </label>
+        </div>
+        <div>
+            <label for="email">E-mail : 
+                <input type="email" name='email' id="email" value="{{userInfo.email}}" required>
+            </label>
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <label for="user-photo">Photo URL : 
+                <input id="user-photo" type="text" name='user-photo' value="{{userInfo.photo_url}}" required>
+            </label>
+        </div>
+        <div>
+            <label for="mobile"> Mobile NO. : 
+                <input type="text" name='mobile' id="mobile" value="{{userInfo.mobile_number}}" required>
+            </label>
+        </div>
+      <div>
+    </div>
+
+    <div>
+        <a href="/settings"  id="save-user-info"> Save </a>
+        <a href="/profile" id="to-profile"> Cancel </a>       
+    </div> 
+</form>
+
+
 
