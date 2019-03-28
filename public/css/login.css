@@ -5,6 +5,7 @@
 }
 body{
   background: #dddddd3b;
+  overflow: hidden;
 }
 .left {
   width: 50%;
