@@ -33,5 +33,28 @@ createPost.addEventListener('click', (e) => {
     headers: {
       'Content-Type': 'application/json',
     },
-  });
+  })
+    .then(res => res.json())
+    .then((res) => {
+      if (res.Error) {
+        Swal.fire({
+          title: '<i>Oops</i>',
+          html: `${res.Error}`,
+          confirmButtonText: '<u>ok</u>',
+        });
+      } else {
+        Swal.fire({
+          title: '<i>Done</i>',
+          html: `${res.success}`,
+          confirmButtonText: '<u>ok</u>',
+        });
+        window.location.href = '/';
+      }
+    }).catch(() => {
+      Swal.fire({
+        title: '<i>Oops</i>',
+        html: 'somthing error',
+        confirmButtonText: '<u>ok</u>',
+      });
+    });
 });
