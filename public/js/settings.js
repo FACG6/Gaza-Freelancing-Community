@@ -1,9 +1,7 @@
-const user = collectData(['#firstname', '#lastname', '#birthday', '#mobile', '#user-photo', '#email', '#user-url']);
+const user = collectData(['firstname', 'lastname', 'birthday', 'mobile', 'userPhoto', 'email', 'userUrl']);
 
 
 const saveBtn = document.getElementById('save-user-info');
-const msg = document.getElementById('msg');
-
 
 saveBtn.addEventListener('click', (e) => {
   e.preventDefault();
