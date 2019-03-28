@@ -9,6 +9,8 @@ const error = require('./error');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
 const { search } = require('./search');
+const profile = require('./profile');
+
 const auth = require('../middlewares/authentication');
 
 const router = express.Router();
@@ -33,7 +35,8 @@ router.post('/search', search);
 router.get('/proposal/:id', proposal.get);
 router.get('/', home.get);
 router.get('/logout', logout);
-
+router.route('/profile')
+  .get(profile.get);
 
 router.use(error.notfound);
 router.use(error.serverError);

@@ -8,8 +8,8 @@ exports.get = (request, response) => {
           response.render('settings', {
             js: ['helpers/collectData', 'settings'],
             userInfo: result.rows[0],
-            css: ['settings'],
-            layout: 'main',
+            css: ['profile', 'settings'],
+            layout: 'profile',
             title: 'settings',
           });
         }
