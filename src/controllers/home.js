@@ -6,7 +6,7 @@ exports.get = (req, res) => {
     if (result[0]) {
       res.render('home', {
         proposals: result,
-        js: ['home'],
+        js: ['helpers/collectData', 'home'],
         layout: 'main',
         css: ['home'],
         title: 'home',

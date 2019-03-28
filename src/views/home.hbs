@@ -4,74 +4,52 @@
     placeholder="Click on post button to add your proposal ..."></textarea>
   <button class="addPropsalbtn" onclick="openForm()"> Add your proposal </button>
 </div>
-
-
-<div class="form-popup" id="myForm">
-  <form action="/create-post" class="form-container">
+<div class="form-popup" id="proposalForm">
+  <form  class="form-container" id="form-container">
     <div class="pop-title">Craete Proposal :</div>
-
     <div class="inputsdiv">
-      <label class='lbl' for="title">Title:</label>
-      <input type="text" placeholder="Enter Title of proposal ..." name="title" required>
+      <label class='lbl' for="postTitle">Title:</label>
+      <input type="text" placeholder="Enter Title of proposal ..." name="title" id="postTitle" required>
     </div>
-
     <div class="inputsdiv">
-      <label class='lbldesc' for="description">Descrption:</label>
-      <textarea type="text" placeholder="Enter Descrption of proposal ..." name="description" required></textarea>
+      <label class='lbldesc' for="postDescription">Descrption:</label>
+      <textarea type="text" placeholder="Enter Descrption of proposal ..." name="description" id="postDescription" required></textarea>
     </div>
-
     <div class="inputsdiv">
-
-
-
       <div class="inputsdiv">
         <label class='lbldesc' for="category">Category:</label>
-        <select>
-          <option value="">1111111111111111111</option>
-          <option value="">asdf</option>
-          <option value="">3</option>
-        </select>
+        <input type="text" readonly> 
       </div>
       <div class="inputsdiv">
         <label class='lblspecial' for="specalization">Specalization:</label>
-        <select class="specaildrop">
-          <option value="">1111111111111111111</option>
-          <option value="">asdf</option>
-          <option value="">3</option>
+        <select class="specialize" id="specialize">
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
         </select>
       </div>
-
-
     </div>
-
-
     <div class="inputsdiv">
       <label class='lbldesc' for="requirment">Requirment:</label>
       <input style="min-width: 60% ; max-width: 60%;" class="requirment" id='requirment' type="text"
         placeholder="Enter Requirment of proposal ..." name="requirment" required>
-      <button class="addbtn"> Add </button>
+      <button class="addbtn" id="addMoreRequirment"> add </button>
     </div>
     <div class="btns">
       <div style='width:70%;'> </div>
-
-      <button type="button" class="btn cancel" onclick="closeForm()">close</button>
-      <button type="submit" class="btn btncreate">Create </button>
-
+      <button type="button" class="btn cancel" onclick="closeForm()">Cansle</button>
+      <button class="btn" id="createPost">Create</button>
     </div>
-
   </form>
 </div>
-
 <script>
   function openForm() {
-    document.getElementById("myForm").style.display = "block";
+    document.getElementById("proposalForm").style.display = "block";
   }
-
   function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+    document.getElementById("proposalForm").style.display = "none";
   }
 </script>
-
 <div class="card">
   <h3>Job Inquiries</h3>
   {{#each proposals}}
@@ -84,8 +62,7 @@
       </div>
     </div>
     <p class="description">{{this.description}} <a href="/proposal/{{this.id}}" class="">more..</a>
-      <p>
-
+    <p>
   </div>
   {{/each}}
 </div>
