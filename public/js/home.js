@@ -10,33 +10,28 @@ moreRequirment.addEventListener('click', (e) => {
   proposalForm.appendChild(newRequirment);
 });
 
-
 createPost.addEventListener('click', (e) => {
-  e.preventDefault();
-  const requirment = document.getElementsByClassName('requirment');
   const post = collectData(['postTitle', 'postDescription']);
   const specId = specializationsdroplst.options[specializationsdroplst.selectedIndex].value;
-  console.log(post);
-  console.log(specId);
-  console.log(requirment);
+  e.preventDefault();
+  const requirments = document.querySelectorAll('.requirment');
+  const require = Array.from(requirments);
+  const a = [];
+  require.forEach((element, index) => {
+    a.push(element.value);
+  });
 
-  const require = requirment.map(index => requirment[index]);
-  console.log(require);
-
-  // console.log(requirment.value);
-
-  // const proposalInfo = {
-  //   post,
-  //   specId,
-  // };
-  // console.log(proposalInfo);
-
-  // fetch('/create-post', {
-  //   method: 'POST',
-  //   credentials: 'same-origin',
-  //   body: JSON.stringify(proposalInfo),
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  // });
+  const proposal = {
+    post,
+    specId,
+    allRequierments: a,
+  };
+  fetch('/create-post', {
+    method: 'POST',
+    credentials: 'same-origin',
+    body: JSON.stringify(proposal),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
 });
