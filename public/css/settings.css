@@ -3,13 +3,11 @@
   float: right;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
-
 .settings .title-userinfo{
   text-align: center;
   margin: 60px 0;
   text-decoration: underline;
 }
-
 .row-one,
 .row-tow,
 .row-three,
@@ -50,7 +48,6 @@
 .settings select:hover{
   box-shadow: 2px 5px 12px rgba(67, 142, 165, 0.3)
 }
-
 .btns{
   width: 300px;
   position: absolute;
