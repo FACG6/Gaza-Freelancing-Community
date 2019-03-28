@@ -2,8 +2,8 @@ const firstStepDiv = getElement('user-info');
 const secondStepDiv = getElement('contacts-info');
 const thirdStepDiv = getElement('confirm-info');
 const confirmedPassword = getElement('confirm-pass', 'val');
-const fieldsdroplst = document.getElementById("category-fields");
-const specializationsdroplst = document.getElementById("specialization-fields");
+const fieldsdroplst = document.getElementById('category-fields');
+const specializationsdroplst = document.getElementById('specialization-fields');
 
 const userInfo = {};
 secondStepDiv.style.display = 'none';
@@ -14,15 +14,15 @@ function OnSelectionChange() {
   specializationsdroplst.textContent = '';
   const categoryId = selectedGategory.value;
   fetch('/specialize', {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      method: 'POST',
-      body: JSON.stringify({
-        categoryId
-      }),
-    }).then(res => res.json())
-    .then((res ) => {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    method: 'POST',
+    body: JSON.stringify({
+      categoryId,
+    }),
+  }).then(res => res.json())
+    .then((res) => {
       const speclize = res.speclize.rows;
       for (let i = 0; i < speclize.length; i++) {
         const option = document.createElement('option');
@@ -39,8 +39,8 @@ getElement('user-info-next-btn').addEventListener('click', (e) => {
     firstname: getElement('firstname', 'val'),
     lastname: getElement('lastname', 'val'),
     mobile_number: getElement('mobile', 'val'),
-    email: getElement('email', 'val')
-  }
+    email: getElement('email', 'val'),
+  };
   validate(userInfo.firstSection, validationRegex.firstStepValidationRegex, (trueOrFalse) => {
     if (trueOrFalse) {
       ToggleDisplay(firstStepDiv, secondStepDiv);
@@ -69,17 +69,17 @@ getElement('signup-btn').addEventListener('click', (e) => {
   userInfo.thirdSection = {
     password: getElement('password', 'val'),
   };
-  if (userInfo.thirdSection['password'] === getElement('confirm-pass', 'val')) {
+  if (userInfo.thirdSection.password === getElement('confirm-pass', 'val')) {
     validate(userInfo.thirdSection, validationRegex.thirdStepValidationRegex, (trueOrFalse) => {
       if (trueOrFalse) {
         fetch('/signup', {
-            method: 'POST',
-            credentials: 'same-origin',
-            body: JSON.stringify(userInfo),
-            headers: {
-              'Content-Type': 'application/json'
-            },
-          })
+          method: 'POST',
+          credentials: 'same-origin',
+          body: JSON.stringify(userInfo),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
           .then(res => res.json())
           .then((res) => {
             if (res.Error) {
