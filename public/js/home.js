@@ -6,18 +6,23 @@ const proposalForm = document.getElementById('form-container');
 moreRequirment.addEventListener('click', (e) => {
   e.preventDefault();
   const newRequirment = document.createElement('input');
-  newRequirment.setAttribute('id', 'requirment');
+  newRequirment.className = 'requirment';
   proposalForm.appendChild(newRequirment);
 });
 
-const requirment = document.getElementById('requirment');
 
 createPost.addEventListener('click', (e) => {
   e.preventDefault();
+  const requirment = document.getElementsByClassName('requirment');
   const post = collectData(['postTitle', 'postDescription']);
   const specId = specializationsdroplst.options[specializationsdroplst.selectedIndex].value;
   console.log(post);
   console.log(specId);
+  console.log(requirment);
+
+  const require = requirment.map(index => requirment[index]);
+  console.log(require);
+
   // console.log(requirment.value);
 
   // const proposalInfo = {
