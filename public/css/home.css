@@ -2,6 +2,10 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+
+}
+
+body {
   background-color: #f9f9f9;
 }
 
@@ -41,52 +45,133 @@
   position: fixed;
   width: 100%;
   height: 100%;
-  top:0;
-  border: 3px solid blue;
+  top: 0;
+  background-color: #33333361;
+  border: 3px solid #33333361;
   z-index: 9;
 }
-.form-popup  ::before{
-  width: 100%;
-  height: 100%;
-  z-index: 7;
-  background-color: #333333;
-}
 
-/* Add styles to the form container */
 .form-container {
   margin-top: 5%;
   margin-left: 10%;
-  max-width:80%;
-  padding: 10px;
-  background-color: red;
-  min-height: 500px;
+  max-width: 70%;
+  background-color: white;
+  min-height: 250px;
+  border-radius: 5px;
+  padding: 1px;
 }
 
-/* Full-width input fields */
-.form-container input[type=text], .form-container input[type=password] {
-  width: 100%;
+.pop-title {
+  margin-top: 5px;
+  font-family: lato;
+  font-size: 32px;
+  color: #333333;
+  padding: 20px;
+  background-color: #eee;
+}
+
+.inputsdiv {
+  display: flex;
+  vertical-align: middle;
+}
+
+.lbl {
+  padding-left: 53px;
+  padding-top: 27px;
+  width: 50px;
+  font-family: lato;
+  color: #333333;
+  font-size: 20px;
+}
+
+.lbldesc {
+  padding-left: 20px;
+  padding-top: 30px;
+  width: 50px;
+  font-family: lato;
+  color: #333333;
+  font-size: 20px;
+}
+.lblspecial{
+  padding-left: 30px;
+  padding-top: 30px;
+  width: 50px;
+  font-family: lato;
+  color: #333333;
+  font-size: 20px;
+}
+
+.form-container input[type=text] .requirment #requirment{
+  max-width: 50%;
+  min-width: 50%;
   padding: 15px;
-  margin: 5px 0 22px 0;
+  margin: 16px 35px 14px 80px;
+  border-radius: 4px;
   border: none;
   background: #f1f1f1;
+  font-family: lato;
+}
+
+.form-container input[type=text],
+.form-container input[type=password],
+.form-container  textarea[type=text],
+.form-container  select {
+  max-width: 70%;
+  min-width: 70%;
+  padding: 15px;
+  margin: 16px 35px 14px 80px;
+  border-radius: 4px;
+  border: none;
+  background: #f1f1f1;
+  font-family: lato;
+}
+.form-container .specaildrop{
+  max-width: 60%;
+  min-width:60%;
+  padding: 15px;
+  margin: 16px 35px 14px 115px;
+  border-radius: 4px;
+  border: none;
+  background: #f1f1f1;
+  font-family: lato;
 }
 
 /* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+.form-container input[type=text]:focus,
+.form-container input[type=password]:focus {
   background-color: #ddd;
   outline: none;
 }
 
+.btns {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4%;
+  margin-bottom: 10px;
+}
+
 /* Set a style for the submit/login button */
 .form-container .btn {
-  background-color :#0F9CAF;
+  background-color: #0F9CAF;
   color: white;
+  font-family: lato;
+  font-size: 18px;
   padding: 16px 20px;
   border: none;
   cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
+  width: 10%;
+  border-radius: 5px;
+}
+.form-container .addbtn {
+  background-color: #0F9CAF;
+  color: white;
+  font-family: lato;
+  font-size: 18px;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 10%;
+  border-radius: 5px;
 }
 
 /* Add a red background color to the cancel button */
@@ -95,6 +180,7 @@
 }
 
 /* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
+.form-container .btn:hover,
+.open-button:hover {
   opacity: 1;
 }
