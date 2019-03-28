@@ -28,10 +28,10 @@ router.route('/signup')
 router.use(authorization);
 router.post('/search', search);
 
+router.get('/', home.get);
 router.get('/proposal/:id', proposal.get);
-router.get('/', home.get);
 router.get('/logout', logout);
-router.get('/', home.get);
+
 router.use(error.notfound);
 router.use(error.serverError);
 module.exports = router;

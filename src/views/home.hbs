@@ -1,4 +1,42 @@
-<div id="proposal">
+
+<div class="create-post">
+    <div class="create">Create new Post </div>
+    <button class="addPropsalbtn"  onclick="openForm()"> Post </button>
+</div>
+
+<div class="form-popup" id="myForm">
+  <form action="/create-post" class="form-container">
+    <h1>Craete Proposal : </h1>
+
+    <label for="email"><b>Description </b></label>
+    <textarea type="text" placeholder="Enter Description here ...." name="email" required></textarea>
+
+    <label for="psw"><b>Category</b></label>
+    <select>
+        <option>dev</option>
+    </select>
+
+<label for="psw"><b>specialization</b></label>
+    <select>
+        <option>new1</option>
+    </select>
+<h2> requirements</h2>
+    <button type="submit" class="btn">Create </button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+  </form>
+</div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+
+<div  style="margin-top:50px" id="proposal">
     <div>
         Create new post:
     </div>
@@ -18,7 +56,7 @@
         </div>
 </div>
 <h3>Job Inquiries</h3>
-{{#each proposal}}
+{{#each proposals}}
 <div>
     <img src="{{this.photo}}" alt="user photo">
     <div><span>{{this.firstname}} {{this.lastname}}</span><span>{{this.specName}}</span>
