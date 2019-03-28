@@ -37,25 +37,19 @@
     </div>
     <div class="btns">
       <div style='width:70%;'> </div>
-
       <button type="button" class="btn cancel" onclick="closeForm()">Cansle</button>
       <button class="btn" id="createPost">Create</button>
-
     </div>
-
   </form>
 </div>
-
 <script>
   function openForm() {
     document.getElementById("proposalForm").style.display = "block";
   }
-
   function closeForm() {
     document.getElementById("proposalForm").style.display = "none";
   }
 </script>
-
 <div class="card">
   <h3>Job Inquiries</h3>
   {{#each proposals}}
@@ -68,8 +62,7 @@
       </div>
     </div>
     <p class="description">{{this.description}} <a href="/proposal/{{this.id}}" class="">more..</a>
-      <p>
-
+    <p>
   </div>
   {{/each}}
 </div>
