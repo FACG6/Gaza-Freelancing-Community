@@ -1,3 +1,99 @@
-<div> 
-    Hello from home page
+<div class="create-post">
+  <div class="create">Create new Post </div>
+  <button class="addPropsalbtn" onclick="openForm()"> Post </button>
 </div>
+
+<div class="form-popup" id="myForm">
+  <form action="/create-post" class="form-container">
+    <div class="pop-title">Craete Proposal : </div>
+
+    <div class="inputsdiv">
+      <label class='lbl' for="title">Title:</label>
+      <input type="text" placeholder="Enter Title of proposal ..." name="title" required>
+
+    </div>
+
+    <div class="inputsdiv">
+      <label class='lbldesc' for="description">Descrption:</label>
+      <textarea type="text" placeholder="Enter Descrption of proposal ..." name="description" required></textarea>
+    </div>
+
+    <div class="inputsdiv">
+
+     
+
+      <div class="inputsdiv">
+        <label class='lbldesc' for="category">Category:</label>
+        <select>
+          <option value="">1111111111111111111</option>
+          <option value="">asdf</option>
+          <option value="">3</option>
+        </select>
+      </div>
+      <div class="inputsdiv">
+        <label class='lblspecial' for="specalization">Specalization:</label>
+        <select class="specaildrop">
+          <option value="">1111111111111111111</option>
+          <option value="">asdf</option>
+          <option value="">3</option>
+        </select>
+      </div>
+
+
+    </div>
+
+
+    <div class="inputsdiv">
+      <label class='lbldesc' for="requirment">Requirment:</label>
+      <input style="min-width: 60% ; max-width: 60%;" class="requirment"  id ='requirment' type="text" placeholder="Enter Requirment of proposal ..." name="requirment" required>
+      <button class="addbtn">  add </button>
+    </div>
+    <div class="btns">
+      <div style='width:70%;'> </div>
+
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      <button type="submit" class="btn">Create </button>
+
+    </div>
+
+  </form>
+</div>
+
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
+
+<div style="margin-top:50px" id="proposal">
+  <div>
+    Create new post:
+  </div>
+  <textarea onfocus="append()" onblur="remove()" id="text-area" placeholder="Write your proposal..."></textarea>
+  <button id="post">Post</button>
+  <div id="requirements" style="display:none">
+    <ul id="spcialization">
+      <h4>specialization</h4>
+      <input id="specialization" type="text" placeholder="Enter required specialization.."></input>
+    </ul>
+    <ul id="skills">
+      <h4>Required skills:</h4>
+      <input type="text" placeholder="Enter a required skill.." id="0"></input>
+    </ul>
+    <button id="add-more">add more</button>
+    <button id="delete">delete</button>
+  </div>
+</div>
+<h3>Job Inquiries</h3>
+{{#each proposals}}
+<div>
+  <img src="{{this.photo}}" alt="user photo">
+  <div><span>{{this.firstname}} {{this.lastname}}</span><span>{{this.specName}}</span>
+    <p>{{this.description}}<p>
+  </div>
+</div>
+{{/each}}

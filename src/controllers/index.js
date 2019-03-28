@@ -6,10 +6,10 @@ const login = require('./login');
 const settings = require('./settings');
 const proposal = require('./proposal');
 const error = require('./error');
+const profile = require('./profile');
 const home = require('./home');
 const { authorization, permission } = require('../middlewares/authorization');
 const { search } = require('./search');
-const profile = require('./profile');
 
 const auth = require('../middlewares/authentication');
 
@@ -27,16 +27,17 @@ router.route('/signup')
   .get(permission, signup.get)
   .post(signup.post);
 
-
 router.use(authorization);
 router.get('/settings', settings.get);
 router.post('/search', search);
 
-router.get('/proposal/:id', proposal.get);
 router.get('/', home.get);
-router.get('/logout', logout);
+
+router.get('/proposal/:id', proposal.get);
 router.route('/profile')
   .get(profile.get);
+
+router.get('/logout', logout);
 
 router.use(error.notfound);
 router.use(error.serverError);
