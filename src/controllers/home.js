@@ -1,6 +1,7 @@
 const getData = require('./../database/queries/getData');
 
 exports.get = (req, res) => {
+  const userinfo = req.auth;
   getData.getProposals(1).then(({ rows: result }) => {
     if (result[0]) {
       res.render('home', {
@@ -9,6 +10,7 @@ exports.get = (req, res) => {
         layout: 'main',
         css: ['home'],
         title: 'home',
+        userinfo,
       });
     } else {
       res.status(400).send({ Error: 'Bad Request' });
