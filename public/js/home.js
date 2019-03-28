@@ -7,6 +7,8 @@ moreRequirment.addEventListener('click', (e) => {
   e.preventDefault();
   const newRequirment = document.createElement('input');
   newRequirment.className = 'requirment';
+  // newRequirment.setAttribute('type', 'text');
+  newRequirment.classList.add('require');
   proposalForm.appendChild(newRequirment);
 });
 
