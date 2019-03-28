@@ -5,7 +5,6 @@ require('dotenv').config();
 let DB_URL = '';
 switch (process.env.NODE_ENV) {
   case 'test': DB_URL = process.env.TESTING_DB_URL; break;
-  case 'production': DB_URL = process.env.PRODUCTION_DB_URL; break;
   case 'development': DB_URL = process.env.DEVELOPMENT_DB_URL; break;
   default: throw new Error('Can not found the DB_URL !!!');
 }
