@@ -63,7 +63,7 @@ const getProposals = (specId) => {
 };
 
 const getProposal = (id) => {
-  const sql = 'SELECT users.firstname, users.specalization_id, users.lastname, users.email, users.freelancer_url, users.photo_url, users.mobile_number, specialization.name, proposal.title,proposal.description, proposal.contact_me, requirement.prop_id from (users join specialization  on users.specalization_id = specialization.id) join (proposal  join requirement on requirement.prop_id = proposal.id) on proposal.user_id = users.id where proposal.id = $1';
+  const sql = 'SELECT users.firstname, users.specalization_id, users.lastname, users.email, users.freelancer_url, users.photo_url, users.mobile_number, specialization.name, proposal.title,proposal.description,requirement.prop_id from (users join specialization  on users.specalization_id = specialization.id) join (proposal  join requirement on requirement.prop_id = proposal.id) on proposal.user_id = users.id where proposal.id = $1';
   const values = [id];
   return connect.query(sql, values);
 };

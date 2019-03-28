@@ -1,7 +1,7 @@
 const collectData = (selector) => {
-  let data = {};
-  selector.forEach(element => {
-    data[element] = document.querySelector(`${element}`).value.trim();
+  const data = {};
+  selector.forEach((element) => {
+    data[element] = document.getElementById(`${element}`).value.trim();
   });
   return data;
 };
