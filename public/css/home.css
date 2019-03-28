@@ -72,6 +72,7 @@ body {
   min-height: 250px;
   border-radius: 5px;
   padding: 1px;
+  position: relative;
 }
 
 .pop-title {
@@ -183,12 +184,16 @@ body {
   cursor: pointer;
   border-radius: 3px;
   margin: 20px -5px;
+  width: 150px;
 }
 
 /* Add a red background color to the cancel button */
 .form-container .cancel {
   background-color: #ff0000b5;
   margin-left:  10px;
+  position: absolute;
+  top: 5px;
+  right: 10px;
 }
 
 /* Add some hover effects to buttons */
@@ -289,4 +294,11 @@ body {
   border-radius: 50%;
   background: #0F22AF;
   margin: 25px 100px;
+}
+
+.btncreate{
+  margin-right: 28px;
+  padding: 10px 15px;
+  width: 150px;
+  margin-top: -35px;
 }
