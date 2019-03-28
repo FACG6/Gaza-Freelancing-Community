@@ -1,6 +1,7 @@
 <div class="create-post">
   <div class="create">Create new Post </div>
-  <textarea onfocus="openForm()" class="createpost" placeholder="Click on post button to add your proposal ..."></textarea>
+  <textarea onfocus="openForm()" class="createpost"
+    placeholder="Click on post button to add your proposal ..."></textarea>
   <button class="addPropsalbtn" onclick="openForm()"> Add your proposal </button>
 </div>
 <div class="form-popup" id="proposalForm">
@@ -58,11 +59,17 @@
 <div class="card">
   <h3>Job Inquiries</h3>
   {{#each proposals}}
-  <div>
-    <img src="{{this.photo}}" alt="user photo">
-    <div><span>{{this.firstname}} {{this.lastname}}</span><span>{{this.specName}}</span>
-      <p>{{this.description}}<p>
+  <div class="content">
+    <div class="head-content">
+      <div class="img"><img src="{{this.photo}}" alt="user photo"></div>
+      <div class="username-spec">
+        <span class="fullname">{{this.firstname}} {{this.lastname}}</span><br>
+        <span class="specname">{{this.specName}}web developer</span>
+      </div>
     </div>
+    <p class="description">{{this.description}} <a href="/proposal/{{this.id}}" class="">more..</a>
+      <p>
+
   </div>
   {{/each}}
 </div>

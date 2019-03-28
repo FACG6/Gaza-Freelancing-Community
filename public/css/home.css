@@ -7,6 +7,7 @@
 
 body {
   background-color: #f9f9f9;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .create-post {
@@ -194,4 +195,98 @@ body {
 .form-container .btn:hover,
 .open-button:hover {
   opacity: 1;
+}
+
+.card{
+  width: 60%;
+  margin: 100px auto;
+}
+
+.card h3{
+  border-bottom: 2px solid black;
+  padding: 10px 0;
+}
+
+.content{
+  margin: 30px 0;
+  position: relative;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 7px rgb(160, 157, 157);
+  min-height: 250px;
+}
+.img{
+  width: 50px;
+  height: 50px;
+  background: #0F9CAF;
+  border-radius: 50%;
+}
+
+.username-spec{
+  position: absolute;
+  top: 20px;
+  left: 90px;
+  
+}
+.head-content{
+  height: 80px;
+  background: #EEEEEE;
+  padding: 15px 30px;
+  border-radius: 5px 5px 0 0;
+}
+.description{
+  padding: 30px;
+}
+.content a{
+  color: #0F9CAF;
+  text-decoration: none;
+}
+
+.navbar{
+  background: #0F9CAF;
+  height: 80px;
+  width: 100%;
+  position: relative;
+}
+.navbar img{
+  height: 150px;
+  width: 130px;
+  position: absolute;
+  top: -40px;
+  left: 40px;
+}
+.navbar #nav #left input{
+  position: absolute;
+  left: 258px;
+  height: 40px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  top: 20px;
+  width: 400px;
+}
+.navbar #nav #right{
+  position: absolute;
+  right: 50px;
+  top: 30px;
+}
+
+#right ul li{
+  float: left;
+  padding: 0 50px;
+  list-style-type: none;
+  color: white;
+}
+#right ul li a{
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+#right ul li a img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #0F22AF;
+  margin: 25px 100px;
 }
