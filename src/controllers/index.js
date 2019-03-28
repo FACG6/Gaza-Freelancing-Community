@@ -28,6 +28,7 @@ router.route('/signup')
 
 router.use(authorization);
 router.get('/settings', settings.get);
+router.put('/settings', settings.put);
 router.post('/search', search);
 
 router.get('/proposal/:id', proposal.get);
