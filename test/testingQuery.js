@@ -94,7 +94,7 @@ tape('test getPropsalsbyValue for \' valid value to title\'', (t) => {
           t.equal(res.rows[0].title, 'front-end develpoer', ' Must Retrun front-end develpoer');
           t.end();
         }).catch((err) => {
-          t.error(errr);
+          t.error(err);
           t.end();
         });
     })
