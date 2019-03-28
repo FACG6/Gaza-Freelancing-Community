@@ -8,4 +8,21 @@ const addUser = (userInfo) => {
   };
   return connection.query(queryObj);
 };
-module.exports = { addUser };
+
+const addPost = (title, description, userid, speccatizationId) => {
+  const sql = {
+    text: 'insert into proposal (title , description,user_id, specalization_id) values ($1,$2, $3,$4) RETURNING *',
+    values: [title, description, userid, speccatizationId],
+  };
+  return connection.query(sql);
+};
+
+const addRequirment = (text, proposalId) => {
+  const sql = {
+    text: 'insert into requirement  (text , prop_id ) values ($1,$2) RETURNING *',
+    values: [text, proposalId],
+  };
+  return connection.query(sql);
+};
+
+module.exports = { addUser, addPost, addRequirment };
